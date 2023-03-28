@@ -79,7 +79,7 @@ struct DialogueView: View {
                 text = ""
             }
             if position < dialogue[dialoguePosition].count {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) {
                     text.append(dialogue[dialoguePosition][position])
                     typeWriter(at: position + 1)
                 }

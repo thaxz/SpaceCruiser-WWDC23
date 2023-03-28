@@ -20,7 +20,7 @@ struct GameView: View {
         self.level = level
         switch level {
         case .earth:
-            self.backgroundImage = "earthSkyPH"
+            self.backgroundImage = "bgEarth"
             self.groundImage = "earthGroundPH"
         case .planet:
             self.backgroundImage = "bgMoon"
