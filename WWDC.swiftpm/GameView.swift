@@ -20,11 +20,11 @@ struct GameView: View {
         self.level = level
         switch level {
         case .earth:
-            self.backgroundImage = "bgEarth"
-            self.groundImage = "earthGroundPH"
+            self.backgroundImage = "skyEarth"
+            self.groundImage = "groundEarth"
         case .planet:
-            self.backgroundImage = "bgMoon"
-            self.groundImage = "moonGroundPH"
+            self.backgroundImage = "skyMoon"
+            self.groundImage = "groundMoon"
         }
     }
     
@@ -38,7 +38,7 @@ struct GameView: View {
                             Spacer()
                             Image(groundImage)
                                 .resizable()
-                                .frame(height: 610)
+                                .frame(height: 495)
                                 .transformEffect(
                                     withAnimation(.spring()){
                                         gameViewModel.planetRotation
@@ -68,8 +68,8 @@ struct GameView: View {
                                 .transformEffect(gameViewModel.playerRotation)
                             Spacer()
                             Spacer()
-                            Spacer()
-                            Spacer()
+                            //Spacer()
+                            //Spacer()
                         }
                     }
             

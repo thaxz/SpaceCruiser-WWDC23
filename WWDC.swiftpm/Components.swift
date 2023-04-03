@@ -44,8 +44,8 @@ struct DialogueContainer: View {
     var body: some View {
         ZStack(alignment: .topLeading){
             Rectangle()
-                .foregroundColor(type == .earth ? Color.theme.darkerPurple : Color.theme.darkerBlue)
-                .opacity(0.80)
+                .foregroundColor(Color.theme.darkerBlue)
+                .opacity(0.90)
                 .border(.white, width: 3)
             Text(text)
                 .font(.system(size: 16, weight: .medium))
@@ -63,11 +63,11 @@ struct LevelContainer: View {
             ZStack{
                 RoundedRectangle(cornerRadius: 30)
                     .frame(width: 150,height: 150)
-                    .foregroundColor(Color.theme.darkerGray)
+                    .foregroundColor(Color.theme.darkerBlue)
                     .overlay(
                         RoundedRectangle(cornerRadius: 30)
-                            .stroke(.white, lineWidth: 2)
-                            .shadow(color: .white, radius: 5)
+                            .stroke(.white, lineWidth: 4)
+                            .shadow(color: .white, radius: 2)
                     )
                 Image(type == .earth ? "earthPH" : "moonPH")
                     .resizable()
@@ -116,7 +116,7 @@ struct LocationContainer: View {
                 .padding(.leading)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .frame(height: 55)
-                .background(type == .earth ? Color.theme.darkerPurple : Color.theme.darkerBlue)
+                .background(Color.theme.darkerBlue)
                 .font(.system(size: 22, weight: .bold))
                 .foregroundColor(.white)
                 .shadow(color: .black.opacity(0.2), radius: 3)

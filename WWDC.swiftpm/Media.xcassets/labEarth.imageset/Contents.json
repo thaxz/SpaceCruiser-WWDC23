@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "dialogueEarthPH.png",
+      "filename" : "labEarth.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dialogueEarthPH@2x.png",
+      "filename" : "labEarth@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "dialogueEarthPH@3x.png",
+      "filename" : "labEarth@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

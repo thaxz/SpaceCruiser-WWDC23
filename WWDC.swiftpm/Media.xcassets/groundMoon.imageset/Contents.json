@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bgEarth.png",
+      "filename" : "groundMoon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bgEarth@2x.png",
+      "filename" : "groundMoon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bgEarth@3x.png",
+      "filename" : "groundMoon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -22,11 +22,11 @@ struct DialogueView: View {
         self.level = level
         switch level {
         case .earth:
-            self.background = "dialogueEarthPH"
+            self.background = "labEarth"
             self.location = "EARTH STATION"
             self.dialogue = Dialogues().earth
         case .planet:
-            self.background = "dialogueMoonPH"
+            self.background = "labMoon"
             self.location = "PLANET STATION"
             self.dialogue = Dialogues().planet
         }
@@ -56,6 +56,7 @@ struct DialogueView: View {
                             dialoguePosition += 1
                             if dialoguePosition == 7 {
                                 dialoguePosition = 0
+                                gameViewModel.showWin = false
                                 gameViewModel.gameScene = .gameScreen
                                 gameViewModel.setUpGame()
                             }
@@ -95,7 +96,7 @@ struct DialoguePrimaryButton: View {
         ZStack{
             Rectangle()
                 .border(.white, width: 2)
-                .foregroundColor(type == .earth ? Color.theme.mediumPurple : Color.theme.mediumBlue)
+                .foregroundColor(Color.theme.mediumBlue)
             Text(name)
                 .foregroundColor(.white)
                 .font(.system(size: 17, weight: .bold))

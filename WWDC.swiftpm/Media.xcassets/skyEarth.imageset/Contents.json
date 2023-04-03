@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "dialogueMoonPH.png",
+      "filename" : "skyEarth.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dialogueMoonPH@2x.png",
+      "filename" : "skyEarth@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "dialogueMoonPH@3x.png",
+      "filename" : "skyEarth@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
