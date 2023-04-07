@@ -69,7 +69,7 @@ struct LevelContainer: View {
                             .stroke(.white, lineWidth: 4)
                             .shadow(color: .white, radius: 2)
                     )
-                Image(type == .earth ? "earthPH" : "moonPH")
+                Image(type == .earth ? "earthPlanet" : "moonPlanet")
                     .resizable()
                     .frame(width: 110, height: 110)
                     .scaledToFit()
@@ -153,6 +153,30 @@ struct InstructionsBanner: View {
             }
         }
         .frame(width: 260,height: 150)
+    }
+}
+
+struct TimeContainer: View {
+    var time: Int
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .frame(width: 135, height: 40)
+                .foregroundColor(.clear)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.white, lineWidth: 2)
+            )
+            if time >= 10 {
+                Text("00:\(time)")
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundColor(.white)
+            } else {
+                Text("00:0\(time)")
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundColor(.white)
+            }
+        }
     }
 }
 

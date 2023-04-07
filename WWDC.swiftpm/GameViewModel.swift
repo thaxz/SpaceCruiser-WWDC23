@@ -17,7 +17,7 @@ class GameViewModel: ObservableObject {
     @Published var index = 0
     @Published var secondsPlayed: String = "00"
     @Published var secondsPlaying = 00
-    @Published var secondsNeeded: Int = 30
+    @Published var secondsNeeded: Int = 00
     
     var sprintSheetTimer: Timer?
     var rotationTimer: Timer?
@@ -68,7 +68,7 @@ class GameViewModel: ObservableObject {
     }
     
     func pauseGame(){
-        secondsPlaying = 00
+        secondsPlaying = secondsNeeded
         showGameOver = false
         isMoving = false
         self.playerRotation = CGAffineTransform(rotationAngle: 0)
@@ -84,7 +84,7 @@ class GameViewModel: ObservableObject {
         UIApplication.shared.isIdleTimerDisabled = true
         self.showInstructions = true
         self.animateSpaceship()
-        secondsPlaying = 00
+        secondsPlaying = secondsNeeded
         self.checkWin()
         showGameOver = false
         isMoving = false
@@ -134,8 +134,8 @@ class GameViewModel: ObservableObject {
     
     func checkWin(){
         winTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { time in
-            if self.secondsPlaying < self.secondsNeeded {
-                self.secondsPlaying += 1
+            if self.secondsPlaying > 0 {
+                self.secondsPlaying -= 1
                 print("\(self.secondsPlaying) SEGUNDOS" )
             } else {
                 print("WIN#######333333")

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "earthPH.png",
+      "filename" : "earthPlanet.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "earthPH@2x.png",
+      "filename" : "earthPlanet@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "earthPH@3x.png",
+      "filename" : "earthPlanet@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

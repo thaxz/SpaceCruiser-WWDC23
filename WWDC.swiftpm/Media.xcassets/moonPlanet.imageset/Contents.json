@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "moonPH.png",
+      "filename" : "moonPlanet.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "moonPH@2x.png",
+      "filename" : "moonPlanet@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "moonPH@3x.png",
+      "filename" : "moonPlanet@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

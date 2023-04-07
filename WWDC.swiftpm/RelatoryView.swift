@@ -58,7 +58,21 @@ struct RelatoryView: View {
                     .font(.system(size: 35, weight: .bold))
                     .foregroundColor(.white)
                 
-                Image(image)
+                ZStack{
+                    RoundedRectangle(cornerRadius: 30)
+                        .frame(width: 150,height: 150)
+                        .foregroundColor(Color.theme.darkerBlue)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 30)
+                                .stroke(.white, lineWidth: 4)
+                                .shadow(color: .white, radius: 2)
+                        )
+                    Image(image)
+                        .resizable()
+                        .frame(width: 110, height: 110)
+                        .scaledToFit()
+                }
+                
                 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 20){
