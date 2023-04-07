@@ -12,8 +12,7 @@ struct WinView: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .foregroundColor(Color.theme.darkerPurple)
-                .border(.white, width: 3)
+                .foregroundColor(Color.theme.darkerBlue)
             VStack(spacing: 20){
                 Spacer()
                 Text("MISSION COMPLETED")
@@ -38,7 +37,7 @@ struct WinView: View {
                     gameViewModel.showGameOver = false
                     gameViewModel.pauseGame()
                     gameViewModel.gameScene = .relatory
-                } label: { PrimaryButton(name: "See Relatory", type: .earth) }
+                } label: { PrimaryButton(name: "See Relatory", type: .planet) }
                 
                 Button {
                     gameViewModel.showGameOver = false
@@ -50,8 +49,7 @@ struct WinView: View {
             .padding(20)
             .multilineTextAlignment(.center)
         }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 30)
+        .ignoresSafeArea()
     }
 }
 

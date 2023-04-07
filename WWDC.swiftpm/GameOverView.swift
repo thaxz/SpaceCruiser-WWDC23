@@ -12,8 +12,8 @@ struct GameOverView: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .foregroundColor(Color.theme.darkerPurple)
-                .border(.white, width: 3)
+                .foregroundColor(Color.theme.darkerBlue)
+                //.border(.white, width: 3)
             VStack(spacing: 16){
                 Spacer()
                 Text("DIZZY \n FLIGHT")
@@ -25,6 +25,7 @@ struct GameOverView: View {
                     .foregroundColor(.white)
                 
                 Image("failPH")
+                
 
                 Text("Your mission lasted \(gameViewModel.secondsPlayed)s")
                     .font(.system(size: 20, weight: .semibold))
@@ -39,20 +40,19 @@ struct GameOverView: View {
                     Button {
                         gameViewModel.playAgain()
                         gameViewModel.showGameOver = false
-                    } label: { PrimaryButton(name: "Try Again", type: .earth) }
+                    } label: { PrimaryButton(name: "Try Again", type: .planet) }
                 
                     Button {
                         gameViewModel.showGameOver = false
                         gameViewModel.pauseGame()
                         gameViewModel.gameScene = .home
                     } label: { SecondaryButton(name: "Main Menu") } .tint(.clear)
+                
                 Spacer()
             }
-            .padding(20)
+            .padding(.horizontal, 20)
             .multilineTextAlignment(.center)
-        }
-        .padding(.horizontal ,8)
-        .padding(.vertical, 30)
+        } .ignoresSafeArea()
     }
 }
 
