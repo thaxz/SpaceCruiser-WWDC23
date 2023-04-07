@@ -18,6 +18,8 @@ struct DialogueView: View {
     @State var text: String = ""
     @State var dialoguePosition: Int = 0
     
+    @State var isAnimating: Bool = false
+    
     init(level: GameLevels){
         self.level = level
         switch level {
@@ -45,20 +47,24 @@ struct DialogueView: View {
                     DialogueContainer(text: text, type: gameViewModel.selectedLevel)
                     HStack {
                         Button {
-                            gameViewModel.gameScene = .gameScreen
-                            gameViewModel.setUpGame()
-                            dialoguePosition = 0
-                            gameViewModel.showWin = false
+                            if !isAnimating {
+                                gameViewModel.gameScene = .gameScreen
+                                gameViewModel.setUpGame()
+                                dialoguePosition = 0
+                                gameViewModel.showWin = false
+                            }
                         } label: { DialogueSecondaryButton(name: "skip") } .tint(.clear)
                         Spacer()
                         Button {
-                            typeWriter()
-                            dialoguePosition += 1
-                            if dialoguePosition == 7 {
-                                dialoguePosition = 0
-                                gameViewModel.showWin = false
-                                gameViewModel.gameScene = .gameScreen
-                                gameViewModel.setUpGame()
+                            if !isAnimating {
+                                typeWriter()
+                                dialoguePosition += 1
+                                if dialoguePosition == 7 {
+                                    dialoguePosition = 0
+                                    gameViewModel.showWin = false
+                                    gameViewModel.gameScene = .gameScreen
+                                    gameViewModel.setUpGame()
+                                }
                             }
                         } label: { DialoguePrimaryButton(type: gameViewModel.selectedLevel, name: "next") } .tint(.clear)
                     }
@@ -76,15 +82,19 @@ struct DialogueView: View {
     
     
     func typeWriter(at position: Int = 0) {
+        isAnimating = true
             if position == 0 {
                 text = ""
             }
             if position < dialogue[dialoguePosition].count {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.015) {
                     text.append(dialogue[dialoguePosition][position])
                     typeWriter(at: position + 1)
                 }
             }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            isAnimating = false
+        }
         }
     
 }
