@@ -5,9 +5,9 @@
 //  Created by thaxz on 16/02/23.
 //
 
-import Foundation
 import SwiftUI
 import CoreMotion
+import AVFoundation
 
 class GameViewModel: ObservableObject {
     
@@ -34,7 +34,7 @@ class GameViewModel: ObservableObject {
     @Published var planetRotation = CGAffineTransform(rotationAngle: 0)
     
     lazy var motionManager = CMMotionManager()
-    
+  
     func animateSpaceship() {
             index = 0
             sprintSheetTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: {_ in

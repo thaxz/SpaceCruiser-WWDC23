@@ -13,7 +13,6 @@ struct GameView: View {
     var backgroundImage: String
     var groundImage: String
     let level: GameLevels
-    
     @EnvironmentObject var gameViewModel: GameViewModel
     
     init(level: GameLevels){
@@ -33,35 +32,35 @@ struct GameView: View {
             Color.theme.darkerPurple
             Image(backgroundImage)
                 .resizable()
-                    ZStack(){
-                        VStack {
-                            Spacer()
-                            Image(groundImage)
-                                .resizable()
-                                .frame(height: 495)
-                                .transformEffect(
-                                    withAnimation(.spring()){
-                                        gameViewModel.planetRotation
-                                    }
-                            )
-                        }
-                        VStack{
-                            Spacer()
-                                .frame(height: 50)
-                            TimeContainer(time: gameViewModel.secondsPlaying)
-                            Text("seconds left")
-                                .font(.system(size: 20, weight: .semibold))
-                                .foregroundColor(.white)
-                            Spacer()
-                            Image(uiImage: images[gameViewModel.index])
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
-                                .transformEffect(gameViewModel.playerRotation)
-                            Spacer()
-                            Spacer()
-                        }
-                    }
+            ZStack(){
+                VStack {
+                    Spacer()
+                    Image(groundImage)
+                        .resizable()
+                        .frame(height: 495)
+                        .transformEffect(
+                            withAnimation(.spring()){
+                                gameViewModel.planetRotation
+                            }
+                        )
+                }
+                VStack{
+                    Spacer()
+                        .frame(height: 50)
+                    TimeContainer(time: gameViewModel.secondsPlaying)
+                    Text("seconds left")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.white)
+                    Spacer()
+                    Image(uiImage: images[gameViewModel.index])
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                        .transformEffect(gameViewModel.playerRotation)
+                    Spacer()
+                    Spacer()
+                }
+            }
             
             if gameViewModel.showGameOver {
                 GameOverView()
@@ -78,8 +77,15 @@ struct GameView: View {
                 }
             }
         }
+        .onAppear{
+            play("musicaTest")
+        }
+        .onChange(of: gameViewModel.showWin || gameViewModel.showGameOver, perform: { _ in
+            player.pause()
+        })
         .ignoresSafeArea()
     }
+    
 }
 
 
