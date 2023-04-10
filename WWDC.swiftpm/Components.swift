@@ -8,42 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct PrimaryButton: View {
-    let name: String
-    var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(Color.theme.primaryColor)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(.white, lineWidth: 2)
-                )
-            Text(name)
-                .foregroundColor(.white)
-                .font(.system(size: 22, weight: .bold))
-        }
-        .frame(height: 50)
-    }
-}
-
-struct SecondaryButton: View {
-    let name: String
-    var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(Color.theme.secondaryColor.opacity(0.30))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(.white, lineWidth: 2)
-                )
-            Text(name)
-                .foregroundColor(.white)
-                .font(.system(size: 22, weight: .bold))
-        }
-        .frame(height: 50)
-    }
-}
-
 struct GameGradient: View{
     var body: some View {
         LinearGradient(colors: [Color.theme.firstGradientColor, Color.theme.secondGradientColor], startPoint: .top, endPoint: .bottom)
@@ -184,8 +148,6 @@ struct ComponentsTest_PreviewProvider: PreviewProvider {
                 Color.black
                     .ignoresSafeArea()
                 VStack {
-                    PrimaryButton(name: "Primary")
-                    SecondaryButton(name: "Secondary")
                     DialogueContainer(text: "Testing dialogue", type: .planet)
                     HStack{
                         LevelContainer(type: .earth)

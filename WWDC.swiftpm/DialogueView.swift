@@ -53,7 +53,7 @@ struct DialogueView: View {
                                 dialoguePosition = 0
                                 gameViewModel.showWin = false
                             }
-                        } label: { DialogueSecondaryButton(name: "skip") } .tint(.clear)
+                        } label: { SmallSecondaryButton(name: "skip", width: 100, heigth: 40) } .tint(.clear)
                         Spacer()
                         Button {
                             if !isAnimating {
@@ -66,7 +66,7 @@ struct DialogueView: View {
                                     gameViewModel.setUpGame()
                                 }
                             }
-                        } label: { DialoguePrimaryButton(type: gameViewModel.selectedLevel, name: "next") } .tint(.clear)
+                        } label: { SmallPrimaryButton(name: "next", width: 100, heigth: 40) } .tint(.clear)
                     }
                     Spacer()
                         .frame(height: 20)
@@ -99,42 +99,6 @@ struct DialogueView: View {
     
 }
 
-struct DialoguePrimaryButton: View {
-    let type: GameLevels
-    let name: String
-    var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(Color.theme.primaryColor)
-                .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(.white, lineWidth: 2)
-                )
-            Text(name)
-                .foregroundColor(.white)
-                .font(.system(size: 17, weight: .bold))
-        }
-        .frame(width: 100 ,height: 40)
-    }
-}
-
-struct DialogueSecondaryButton: View {
-    let name: String
-    var body: some View {
-        ZStack{
-            Rectangle()
-                .foregroundColor(Color.theme.secondaryColor.opacity(0.30))
-                .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(.white, lineWidth: 2)
-                )
-            Text(name)
-                .foregroundColor(.white)
-                .font(.system(size: 17, weight: .bold))
-        }
-        .frame(width: 100 ,height: 40)
-    }
-}
 
 struct DialogueView_Previews: PreviewProvider {
     static var previews: some View {

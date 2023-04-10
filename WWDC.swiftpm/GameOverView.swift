@@ -12,47 +12,78 @@ struct GameOverView: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .foregroundColor(Color.theme.darkerBlue)
-                //.border(.white, width: 3)
-            VStack(spacing: 16){
-                Spacer()
-                Text("DIZZY \n FLIGHT")
-                    .font(.system(size: 40, weight: .black))
-                    .foregroundColor(.white)
-                    
-                Text("It looks like you lost some balance!")
-                    .font(.system(size: 22, weight: .semibold))
-                    .foregroundColor(.white)
+                .background(.ultraThickMaterial)
+                .ignoresSafeArea()
+            
+            ZStack {
                 
-                Image("failPH")
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundColor(Color.theme.secondaryColor)
                 
-
-                Text("Your mission lasted \(gameViewModel.secondsPlayed)s")
-                    .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(.white)
-                
-                Text("Try to leave your device within the indicated area!")
-                    .font(.system(size: 20, weight: .regular))
-                    .foregroundColor(.white)
-                
+                VStack(spacing: 8){
                     Spacer()
-                
-                    Button {
-                        gameViewModel.playAgain()
-                        gameViewModel.showGameOver = false
-                    } label: { PrimaryButton(name: "Try Again") }
-                
-                    Button {
-                        gameViewModel.showGameOver = false
-                        gameViewModel.pauseGame()
-                        gameViewModel.gameScene = .home
-                    } label: { SecondaryButton(name: "Main Menu") } .tint(.clear)
-                
-                Spacer()
+                    Text("DIZZY FLIGHT")
+                        .font(.system(size: 42, weight: .heavy))
+                        .foregroundColor(.white)
+                    Spacer()
+                    
+                    ZStack(alignment: .center){
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(Color.theme.primaryColor.opacity(0.30))
+                            .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.theme.terciaryColor, lineWidth: 1)
+                            )
+                        VStack(spacing: 8){
+                            
+                            Text("It looks like you lost some balance!")
+                                .font(.system(size: 22, weight: .bold))
+                            .foregroundColor(.white)
+                            
+                            Image("failImage")
+                               // .resizable()
+                                //.scaledToFit()
+                            
+                            Text("Your mission lasted \(gameViewModel.secondsPlayed)s")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.white)
+                            
+                            Text("Try to leave your device within the indicated area!")
+                                .font(.system(size: 17, weight: .regular))
+                                .foregroundColor(.white)
+                        }
+                        .padding(22)
+                    }
+                    .frame(height: 350)
+                    
+                   Spacer()
+                    
+                    HStack{
+                        
+                        Button {
+                            gameViewModel.playAgain()
+                            gameViewModel.showGameOver = false
+                        } label: { SmallSecondaryButton(name: "Main Menu", width: 150, heigth: 50 )}
+                        
+                        Spacer()
+                            .frame(width: 16)
+                        
+                        Button {
+                            gameViewModel.showGameOver = false
+                            gameViewModel.pauseGame()
+                            gameViewModel.gameScene = .home
+                        } label: { SmallPrimaryButton(name: "Try Again", width: 150, heigth: 50 ) } .tint(.clear)
+                        
+                    }
+                    Spacer()
+                }
+                .padding(24)
+                .multilineTextAlignment(.center)
             }
-            .padding(.horizontal, 20)
-            .multilineTextAlignment(.center)
-        } .ignoresSafeArea()
+            .padding(.horizontal, 16)
+            .frame(height: UIScreen.main.bounds.height * 3/4)
+        }
+        
     }
 }
 
