@@ -31,7 +31,7 @@ struct TutorialView: View {
                 
                 Button {
                     gameViewModel.gameScene = .home
-                } label: { PrimaryButton(name: "Back to Menu", type: .earth)} .tint(.clear)
+                } label: { PrimaryButton(name: "Back to Menu")} .tint(.clear)
                 Spacer()
             }.padding(16)
         }

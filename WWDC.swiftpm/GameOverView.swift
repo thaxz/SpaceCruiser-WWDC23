@@ -40,7 +40,7 @@ struct GameOverView: View {
                     Button {
                         gameViewModel.playAgain()
                         gameViewModel.showGameOver = false
-                    } label: { PrimaryButton(name: "Try Again", type: .planet) }
+                    } label: { PrimaryButton(name: "Try Again") }
                 
                     Button {
                         gameViewModel.showGameOver = false

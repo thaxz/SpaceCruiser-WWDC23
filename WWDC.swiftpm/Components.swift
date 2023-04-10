@@ -10,12 +10,14 @@ import SwiftUI
 
 struct PrimaryButton: View {
     let name: String
-    let type: GameLevels
     var body: some View {
         ZStack{
-            Rectangle()
-                .foregroundColor(type == .earth ? Color.theme.mediumPurple : Color.theme.mediumBlue)
-                .border(.white, width: 2)
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color.theme.primaryColor)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(.white, lineWidth: 2)
+                )
             Text(name)
                 .foregroundColor(.white)
                 .font(.system(size: 22, weight: .bold))
@@ -28,8 +30,12 @@ struct SecondaryButton: View {
     let name: String
     var body: some View {
         ZStack{
-            Rectangle()
-                .border(.white, width: 2)
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color.theme.secondaryColor.opacity(0.30))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(.white, lineWidth: 2)
+                )
             Text(name)
                 .foregroundColor(.white)
                 .font(.system(size: 22, weight: .bold))
@@ -43,10 +49,13 @@ struct DialogueContainer: View {
     let type: GameLevels
     var body: some View {
         ZStack(alignment: .topLeading){
-            Rectangle()
-                .foregroundColor(Color.theme.darkerBlue)
-                .opacity(0.90)
-                .border(.white, width: 3)
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color.theme.secondaryColor)
+                .opacity(0.80)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(.white, lineWidth: 4)
+                )
             Text(text)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(.white)
@@ -61,13 +70,13 @@ struct LevelContainer: View {
     var body: some View {
         VStack {
             ZStack{
-                RoundedRectangle(cornerRadius: 30)
+                RoundedRectangle(cornerRadius: 24)
                     .frame(width: 150,height: 150)
-                    .foregroundColor(Color.theme.darkerBlue)
+                    .foregroundColor(Color.theme.secondaryColor)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 30)
-                            .stroke(.white, lineWidth: 4)
-                            .shadow(color: .white, radius: 2)
+                        RoundedRectangle(cornerRadius: 24)
+                            .stroke(.white, lineWidth: 3)
+                            .shadow(color: .white, radius: 1)
                     )
                 Image(type == .earth ? "earthPlanet" : "moonPlanet")
                     .resizable()
@@ -86,12 +95,12 @@ struct TutorialContainer: View {
     var body: some View {
         ZStack(alignment: type == 0 ? .bottomLeading : .bottom){
             ZStack(alignment: .bottomTrailing){
-                RoundedRectangle(cornerRadius: 30)
+                RoundedRectangle(cornerRadius: 16)
                     .frame(width: 150,height: 150)
-                    .foregroundColor(Color.theme.darkerPurple)
+                    .foregroundColor(Color.theme.primaryColor.opacity(0.30))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 30)
-                            .stroke(.white, lineWidth: 2)
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.white, lineWidth:3)
                 )
                 Image(type == 0 ? "xmarkPH" : "checkmarkPH")
                     .resizable()
@@ -116,10 +125,13 @@ struct LocationContainer: View {
                 .padding(.leading)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .frame(height: 55)
-                .background(Color.theme.darkerBlue)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .foregroundColor(Color.theme.secondaryColor)
+                    )
                 .font(.system(size: 22, weight: .bold))
                 .foregroundColor(.white)
-                .shadow(color: .black.opacity(0.2), radius: 3)
+                .shadow(color: .black.opacity(0.5), radius: 3)
             Spacer()
                 .frame(width: 60)
         }
@@ -130,29 +142,32 @@ struct InstructionsBanner: View {
     let timeNedeed: Int
     var body: some View {
         ZStack{
-            RoundedRectangle(cornerRadius: 50)
-                .foregroundColor(.black.opacity(0.80))
+            RoundedRectangle(cornerRadius: 24)
+                .foregroundColor(Color.theme.secondaryColor)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 50)
-                        .stroke(.white, lineWidth: 2))
-            ZStack {
-                HStack{
-                    Image("leftArrow")
-                    Spacer()
-                    Image("rightArrow")
-                } .padding(4)
-                
-                HStack {
-                    Spacer()
-                    Text("TILT FOR \n \(timeNedeed) \n SECONDS")
+                    RoundedRectangle(cornerRadius: 24)
+                        .stroke(Color.theme.terciaryColor, lineWidth: 1))
+            VStack {
+                    Text("Tilt for \n \(timeNedeed) seconds")
                         .foregroundColor(.white)
-                        .font(.system(size: 30, weight: .bold))
+                        .font(.system(size: 30, weight: .heavy))
                     .multilineTextAlignment(.center)
+                HStack{
+                    Image(systemName: "arrow.backward")
+                        .resizable()
+                        .frame(width: 28, height: 23)
+                        .foregroundColor(.white)
                     Spacer()
+                        .frame(width: 40)
+                    Image(systemName: "arrow.forward")
+                        .resizable()
+                        .frame(width: 28, height: 23)
+                        .foregroundColor(.white)
                 }
+                  
             }
         }
-        .frame(width: 260,height: 150)
+        .frame(width: 250,height: 150)
     }
 }
 
@@ -161,19 +176,24 @@ struct TimeContainer: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .frame(width: 135, height: 40)
-                .foregroundColor(.clear)
+                .frame(width: 135, height: 70)
+                .foregroundColor(Color.theme.primaryColor.opacity(0.30))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(.white, lineWidth: 2)
             )
-            if time >= 10 {
-                Text("00:\(time)")
-                    .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(.white)
-            } else {
-                Text("00:0\(time)")
-                    .font(.system(size: 20, weight: .semibold))
+            VStack(spacing: 4){
+                if time >= 10 {
+                    Text("00:\(time)")
+                        .font(.system(size: 22, weight: .semibold))
+                        .foregroundColor(.white)
+                } else {
+                    Text("00:0\(time)")
+                        .font(.system(size: 22, weight: .semibold))
+                        .foregroundColor(.white)
+                }
+                Text("seconds left")
+                    .font(.system(size: 15, weight: .regular))
                     .foregroundColor(.white)
             }
         }
@@ -182,20 +202,22 @@ struct TimeContainer: View {
 
 struct ComponentsTest_PreviewProvider: PreviewProvider {
     static var previews: some View {
-        ZStack{
-            Color.black
-                .ignoresSafeArea()
-            VStack {
-                PrimaryButton(name: "Primary", type: .earth)
-                SecondaryButton(name: "Secondary")
-                DialogueContainer(text: "Testing dialogue", type: .planet)
-                HStack{
-                    LevelContainer(type: .earth)
-                    TutorialContainer(type: 1)
+            ZStack{
+                Color.black
+                    .ignoresSafeArea()
+                VStack {
+                    PrimaryButton(name: "Primary")
+                    SecondaryButton(name: "Secondary")
+                    DialogueContainer(text: "Testing dialogue", type: .planet)
+                    HStack{
+                        LevelContainer(type: .earth)
+                        TutorialContainer(type: 1)
+                    }
+                    LocationContainer(type: .earth)
+                    InstructionsBanner(timeNedeed: 2)
+                    TimeContainer(time: 2)
                 }
-                LocationContainer(type: .earth)
-                InstructionsBanner(timeNedeed: 2)
             }
-        }
+        
     }
 }

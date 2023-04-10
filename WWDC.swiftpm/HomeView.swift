@@ -24,7 +24,7 @@ struct HomeView: View {
                 Spacer()
                 Button {
                     gameViewModel.gameScene = .levels
-                } label: { PrimaryButton(name: "Play", type: .earth) }
+                } label: { PrimaryButton(name: "Play") }
                 
                 Button {
                     gameViewModel.gameScene = .tutorial

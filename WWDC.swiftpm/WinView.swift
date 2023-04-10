@@ -37,7 +37,7 @@ struct WinView: View {
                     gameViewModel.showGameOver = false
                     gameViewModel.pauseGame()
                     gameViewModel.gameScene = .relatory
-                } label: { PrimaryButton(name: "See Relatory", type: .planet) }
+                } label: { PrimaryButton(name: "See Relatory") }
                 
                 Button {
                     gameViewModel.showGameOver = false

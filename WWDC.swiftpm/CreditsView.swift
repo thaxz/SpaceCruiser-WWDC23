@@ -34,7 +34,7 @@ struct CreditsView: View {
                     
                     Button {
                         gameViewModel.gameScene = .home
-                    } label: { PrimaryButton(name: "Back to Menu", type: .earth) }
+                    } label: { PrimaryButton(name: "Back to Menu") }
                     
                     
                     Spacer()

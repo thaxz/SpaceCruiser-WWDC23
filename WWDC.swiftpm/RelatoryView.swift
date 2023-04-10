@@ -96,7 +96,7 @@ struct RelatoryView: View {
                     
                 Button {
                     gameViewModel.gameScene = .home
-                } label: { PrimaryButton(name: "Main Menu", type: .earth) }
+                } label: { PrimaryButton(name: "Main Menu") }
                 Spacer()
 
             }
