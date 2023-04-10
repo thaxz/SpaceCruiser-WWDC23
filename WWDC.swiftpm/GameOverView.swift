@@ -12,7 +12,7 @@ struct GameOverView: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .background(.ultraThickMaterial)
+                .background(.thinMaterial)
                 .ignoresSafeArea()
             
             ZStack {
@@ -35,14 +35,11 @@ struct GameOverView: View {
                                 .stroke(Color.theme.terciaryColor, lineWidth: 1)
                             )
                         VStack(spacing: 8){
-                            
                             Text("It looks like you lost some balance!")
                                 .font(.system(size: 22, weight: .bold))
                             .foregroundColor(.white)
                             
                             Image("failImage")
-                               // .resizable()
-                                //.scaledToFit()
                             
                             Text("Your mission lasted \(gameViewModel.secondsPlayed)s")
                                 .font(.system(size: 20, weight: .bold))
