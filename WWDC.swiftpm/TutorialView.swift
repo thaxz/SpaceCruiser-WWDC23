@@ -11,12 +11,12 @@ struct TutorialView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
         ZStack{
-            LinearGradient(colors: [Color.theme.firstGradientColor, Color.theme.secondGradientColor], startPoint: .top, endPoint: .bottom)
+            GameGradient()
                 .ignoresSafeArea()
-            VStack(spacing: 30){
+            VStack(spacing: 50){
                 
                 Text("TUTORIAL")
-                    .font(.system(size: 40, weight: .heavy))
+                    .font(.system(size: 42, weight: .heavy))
                     .foregroundColor(.white)
                 Spacer()
                 Text("This is a game of equilibrium")
@@ -36,7 +36,7 @@ struct TutorialView: View {
                 Button {
                     gameViewModel.gameScene = .home
                 } label: { PrimaryButton(name: "Main Menu")} .tint(.clear)
-                Spacer()
+                //Spacer()
             }.padding(16)
         }
     }

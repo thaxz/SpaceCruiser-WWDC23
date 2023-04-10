@@ -11,38 +11,36 @@ struct CreditsView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
         ZStack{
-            Image("levelBgPH")
-                .resizable()
+            GameGradient()
+                .ignoresSafeArea()
                 VStack(spacing: 20){
-                    Spacer()
                     
                     Text("CREDITS")
-                        .font(.system(size: 40, weight: .bold))
+                        .font(.system(size: 42, weight: .bold))
                         .foregroundColor(.white)
                     
                     ScrollView(showsIndicators: false) {
-                        CreditsSection(haveHeader: true, headerName: "Design", type: "design", source: "some link", author: "someone")
-                        
-                        CreditsSection(haveHeader: true, headerName: "Sound Effects", type: "design", source: "some link", author: "someone")
-                        
-                        CreditsSection(haveHeader: true, headerName: "Custom Fonts", type: "design", source: "some link", author: "someone")
-                        
-                        CreditsSection(haveHeader: true, headerName: "Information", type: "design", source: "some link", author: "someone")
-                        
-                        CreditsSection(haveHeader: false, headerName: "Anything else", type: "design", source: "some link", author: "someone")
+                        VStack(spacing: 16){
+                            CreditsSection(haveHeader: true, headerName: "Design", type: "design", source: "some link", author: "someone")
+                            
+                            CreditsSection(haveHeader: true, headerName: "Sound Effects", type: "design", source: "some link", author: "someone")
+                            
+                            CreditsSection(haveHeader: true, headerName: "Custom Fonts", type: "design", source: "some link", author: "someone")
+                            
+                            CreditsSection(haveHeader: true, headerName: "Information", type: "design", source: "some link", author: "someone")
+                            
+                            CreditsSection(haveHeader: false, headerName: "Anything else", type: "design", source: "some link", author: "someone")
+                        }
                     }
                     
                     Button {
                         gameViewModel.gameScene = .home
-                    } label: { PrimaryButton(name: "Back to Menu") }
+                    } label: { PrimaryButton(name: "Main Menu") }
                     
                     
-                    Spacer()
-                        .frame(height: 50)
                 }
                 .padding(16)
         }
-        .ignoresSafeArea()
     }
 }
 
@@ -53,36 +51,49 @@ struct CreditsSection: View {
     let source: String
     let author: String
     var body: some View {
-        VStack(spacing: 8){
-            if haveHeader{
-                Text(headerName)
-                    .font(.system(size: 22, weight: .bold))
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color.theme.primaryColor.opacity(0.30))
+                .overlay (
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.theme.terciaryColor, lineWidth: 2)
+                )
+            VStack(alignment: .leading, spacing: 8){
+                if haveHeader{
+                    HStack{
+                        Text(headerName)
+                            .font(.system(size: 22, weight: .semibold))
+                        Spacer()
+                    }
+                    Spacer()
+                        .frame(height: 4)
+                }
+               
+                HStack {
+                    Text("Type:")
+                        .font(.system(size: 16, weight: .regular))
+                    Spacer()
+                    Text(type)
+                        .font(.system(size: 16, weight: .regular))
+                }
+                HStack {
+                    Text("Source:")
+                        .font(.system(size: 16, weight: .regular))
+                    Spacer()
+                    Text(source)
+                        .font(.system(size: 16, weight: .regular))
+                }
+                HStack {
+                    Text("Author:")
+                        .font(.system(size: 16, weight: .regular))
+                    Spacer()
+                    Text(author)
+                        .font(.system(size: 16, weight: .regular))
+                }
             }
-            Spacer()
-                .frame(height: 8)
-            HStack {
-                Text("Type:")
-                    .font(.system(size: 16, weight: .medium))
-                Spacer()
-                Text(type)
-                    .font(.system(size: 16, weight: .medium))
-            }
-            HStack {
-                Text("Source:")
-                    .font(.system(size: 16, weight: .medium))
-                Spacer()
-                Text(source)
-                    .font(.system(size: 16, weight: .medium))
-            }
-            HStack {
-                Text("Author:")
-                    .font(.system(size: 16, weight: .medium))
-                Spacer()
-                Text(author)
-                    .font(.system(size: 16, weight: .medium))
-            }
-            
-        } .foregroundColor(.white)
+            .padding(16)
+            .foregroundColor(.white)
+        }
     }
 }
 

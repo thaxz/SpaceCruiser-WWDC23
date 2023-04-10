@@ -104,9 +104,12 @@ struct DialoguePrimaryButton: View {
     let name: String
     var body: some View {
         ZStack{
-            Rectangle()
-                .border(.white, width: 2)
-                .foregroundColor(Color.theme.mediumBlue)
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color.theme.primaryColor)
+                .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(.white, lineWidth: 2)
+                )
             Text(name)
                 .foregroundColor(.white)
                 .font(.system(size: 17, weight: .bold))
@@ -120,8 +123,11 @@ struct DialogueSecondaryButton: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .border(.white, width: 2)
-                .foregroundColor(.clear)
+                .foregroundColor(Color.theme.secondaryColor.opacity(0.30))
+                .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(.white, lineWidth: 2)
+                )
             Text(name)
                 .foregroundColor(.white)
                 .font(.system(size: 17, weight: .bold))

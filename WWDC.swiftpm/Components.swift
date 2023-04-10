@@ -60,7 +60,7 @@ struct DialogueContainer: View {
                 .opacity(0.80)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(.white, lineWidth: 4)
+                        .stroke(.white, lineWidth: 3)
                 )
             Text(text)
                 .font(.system(size: 16, weight: .medium))
