@@ -11,9 +11,7 @@ struct HomeView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
         ZStack{
-            Color.theme.darkerPurple
-            Image("mainMenuPH")
-                .resizable()
+            GameGradient()
             VStack(spacing: 20){
                 Spacer()
                     .frame(height: 30)

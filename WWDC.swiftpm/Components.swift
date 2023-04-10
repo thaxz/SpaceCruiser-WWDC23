@@ -44,6 +44,12 @@ struct SecondaryButton: View {
     }
 }
 
+struct GameGradient: View{
+    var body: some View {
+        LinearGradient(colors: [Color.theme.firstGradientColor, Color.theme.secondGradientColor], startPoint: .top, endPoint: .bottom)
+    }
+}
+
 struct DialogueContainer: View {
     var text: String
     let type: GameLevels
@@ -171,34 +177,6 @@ struct InstructionsBanner: View {
     }
 }
 
-struct TimeContainer: View {
-    var time: Int
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: 135, height: 70)
-                .foregroundColor(Color.theme.primaryColor.opacity(0.30))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.white, lineWidth: 2)
-            )
-            VStack(spacing: 4){
-                if time >= 10 {
-                    Text("00:\(time)")
-                        .font(.system(size: 22, weight: .semibold))
-                        .foregroundColor(.white)
-                } else {
-                    Text("00:0\(time)")
-                        .font(.system(size: 22, weight: .semibold))
-                        .foregroundColor(.white)
-                }
-                Text("seconds left")
-                    .font(.system(size: 15, weight: .regular))
-                    .foregroundColor(.white)
-            }
-        }
-    }
-}
 
 struct ComponentsTest_PreviewProvider: PreviewProvider {
     static var previews: some View {
@@ -215,7 +193,6 @@ struct ComponentsTest_PreviewProvider: PreviewProvider {
                     }
                     LocationContainer(type: .earth)
                     InstructionsBanner(timeNedeed: 2)
-                    TimeContainer(time: 2)
                 }
             }
         
