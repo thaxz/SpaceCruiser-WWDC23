@@ -20,13 +20,16 @@ struct HomeView: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Spacer()
-                Button {
-                    gameViewModel.gameScene = .levels
-                } label: { PrimaryButton(name: "Play") }
                 
-                Button {
+                
+                PrimaryButton(action: {
+                    gameViewModel.gameScene = .levels
+                }, name: "Play")
+                
+                SecondaryButton(action: {
                     gameViewModel.gameScene = .tutorial
-                } label: { SecondaryButton(name: "Tutorial") } .tint(.clear)
+                }, name: "Tutorial") .tint(.clear)
+                
                 Spacer()
                     .frame(height: 20)
                 Button {

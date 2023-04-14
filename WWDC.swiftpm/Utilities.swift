@@ -26,7 +26,7 @@ enum GameLevels: String {
 }
 
 enum ButtonTypes: String {
-    
+
     case primary
     case secondary
 }

@@ -32,10 +32,9 @@ struct CreditsView: View {
                             CreditsSection(haveHeader: false, headerName: "Anything else", type: "design", source: "some link", author: "someone")
                         }
                     }
-                    
-                    Button {
+                    PrimaryButton(action: {
                         gameViewModel.gameScene = .home
-                    } label: { PrimaryButton(name: "Main Menu") }
+                    }, name: "Main Menu")
                     
                     
                 }

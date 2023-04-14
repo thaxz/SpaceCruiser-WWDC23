@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "mainMenuPH.png",
+      "filename" : "characterEarth.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "mainMenuPH@2x.png",
+      "filename" : "characterEarth@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "mainMenuPH@3x.png",
+      "filename" : "characterEarth@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

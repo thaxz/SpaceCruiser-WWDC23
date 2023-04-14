@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "winPH.png",
+      "filename" : "characterMoon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "winPH@2x.png",
+      "filename" : "characterMoon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "winPH@3x.png",
+      "filename" : "characterMoon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

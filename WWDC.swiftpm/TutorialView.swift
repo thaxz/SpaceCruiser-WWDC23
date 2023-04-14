@@ -33,9 +33,11 @@ struct TutorialView: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Spacer()
-                Button {
+                
+                PrimaryButton(action: {
                     gameViewModel.gameScene = .home
-                } label: { PrimaryButton(name: "Main Menu")} .tint(.clear)
+                }, name: "Main Menu").tint(.clear)
+                
                 //Spacer()
             }.padding(16)
         }

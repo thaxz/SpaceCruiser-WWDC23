@@ -53,20 +53,21 @@ struct WinView: View {
                     Spacer()
                     
                     HStack{
-                        Button {
+                        SmallSecondaryButton(action: {
                             gameViewModel.showGameOver = false
                             gameViewModel.pauseGame()
                             gameViewModel.gameScene = .home
-                        } label: { SmallSecondaryButton(name: "Main Menu", width: 150, heigth: 50 )}
+                        }, name: "Main Menu", width: 150, heigth: 50)
                         
                         Spacer()
                             .frame(width: 16)
                         
-                        Button {
+                        SmallPrimaryButton(action: {
                             gameViewModel.showGameOver = false
                             gameViewModel.pauseGame()
                             gameViewModel.gameScene = .relatory
-                        } label: { SmallPrimaryButton(name: "See Relatory", width: 150, heigth: 50 )} .tint(.clear)
+                        }, name: "See Relatory", width: 150, heigth: 50)
+                        
                     }
                     Spacer()
                 }

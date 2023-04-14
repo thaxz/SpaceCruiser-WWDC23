@@ -56,21 +56,19 @@ struct GameOverView: View {
                    Spacer()
                     
                     HStack{
-                        
-                        Button {
+                        SmallSecondaryButton(action: {
                             gameViewModel.playAgain()
                             gameViewModel.showGameOver = false
-                        } label: { SmallSecondaryButton(name: "Main Menu", width: 150, heigth: 50 )}
+                        }, name: "Main Menu", width: 150, heigth: 50)
                         
                         Spacer()
                             .frame(width: 16)
                         
-                        Button {
+                        SmallPrimaryButton(action: {
                             gameViewModel.showGameOver = false
                             gameViewModel.pauseGame()
                             gameViewModel.gameScene = .home
-                        } label: { SmallPrimaryButton(name: "Try Again", width: 150, heigth: 50 ) } .tint(.clear)
-                        
+                        }, name: "Try Again", width: 150, heigth: 50)
                     }
                     Spacer()
                 }

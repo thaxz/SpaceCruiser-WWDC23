@@ -94,11 +94,10 @@ struct RelatoryView: View {
                             .padding(16)
                         }
                     }
-                }
-                    
-                Button {
+                }                    
+                PrimaryButton(action: {
                     gameViewModel.gameScene = .home
-                } label: { PrimaryButton(name: "Main Menu") }
+                }, name: "Main Menu")
 
             }
             .padding(20)
