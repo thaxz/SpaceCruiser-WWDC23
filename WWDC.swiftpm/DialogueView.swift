@@ -15,27 +15,43 @@ struct DialogueView: View {
     let dialogue: [String]
     var background: String
     var location: String
+    var character: String
     @State var text: String = ""
     @State var dialoguePosition: Int = 0
+    
+    @State var isAnimating: Bool = false
     
     init(level: GameLevels){
         self.level = level
         switch level {
         case .earth:
-            self.background = "dialogueEarthPH"
-            self.location = "EARTH STATION"
+            self.background = "labEarth"
+            self.location = "EARTH'S STATION"
             self.dialogue = Dialogues().earth
+            self.character = "characterEarth"
         case .planet:
-            self.background = "dialogueMoonPH"
-            self.location = "PLANET STATION"
+            self.background = "labMoon"
+            self.location = "MOON'S STATION"
             self.dialogue = Dialogues().planet
+            self.character = "characterMoon"
         }
     }
     
     var body: some View {
-        ZStack{
+        ZStack(alignment: .bottom){
             Image(background)
                 .resizable()
+            VStack{
+                HStack(){
+                    Spacer()
+                    Spacer()
+                    Image(character)
+                    //.resizable()
+                }
+                Spacer()
+                    .frame(height: 50)
+            }
+            
             VStack(){
                 Spacer()
                     .frame(height: 60)
@@ -44,22 +60,29 @@ struct DialogueView: View {
                 VStack(spacing: 24){
                     DialogueContainer(text: text, type: gameViewModel.selectedLevel)
                     HStack {
-                        Button {
-                            gameViewModel.gameScene = .gameScreen
-                            gameViewModel.setUpGame()
-                            dialoguePosition = 0
-                            gameViewModel.showWin = false
-                        } label: { DialogueSecondaryButton(name: "skip") } .tint(.clear)
-                        Spacer()
-                        Button {
-                            typeWriter()
-                            dialoguePosition += 1
-                            if dialoguePosition == 7 {
-                                dialoguePosition = 0
+                        SmallSecondaryButton(action: {
+                            if !isAnimating {
                                 gameViewModel.gameScene = .gameScreen
                                 gameViewModel.setUpGame()
+                                dialoguePosition = 0
+                                gameViewModel.showWin = false
                             }
-                        } label: { DialoguePrimaryButton(type: gameViewModel.selectedLevel, name: "next") } .tint(.clear)
+                        }, name: "skip", width: 100, heigth: 40) .tint(.clear)
+                        
+                        Spacer()
+                        
+                        SmallPrimaryButton(action: {
+                            if !isAnimating {
+                                typeWriter()
+                                dialoguePosition += 1
+                                if dialoguePosition == 7 {
+                                    dialoguePosition = 0
+                                    gameViewModel.showWin = false
+                                    gameViewModel.gameScene = .gameScreen
+                                    gameViewModel.setUpGame()
+                                }
+                            }
+                        }, name: "next", width: 100, heigth: 40) .tint(.clear)
                     }
                     Spacer()
                         .frame(height: 20)
@@ -75,49 +98,23 @@ struct DialogueView: View {
     
     
     func typeWriter(at position: Int = 0) {
+        isAnimating = true
             if position == 0 {
                 text = ""
             }
             if position < dialogue[dialoguePosition].count {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.015) {
                     text.append(dialogue[dialoguePosition][position])
                     typeWriter(at: position + 1)
                 }
             }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            isAnimating = false
+        }
         }
     
 }
 
-struct DialoguePrimaryButton: View {
-    let type: GameLevels
-    let name: String
-    var body: some View {
-        ZStack{
-            Rectangle()
-                .border(.white, width: 2)
-                .foregroundColor(type == .earth ? Color.theme.mediumPurple : Color.theme.mediumBlue)
-            Text(name)
-                .foregroundColor(.white)
-                .font(.system(size: 17, weight: .bold))
-        }
-        .frame(width: 100 ,height: 40)
-    }
-}
-
-struct DialogueSecondaryButton: View {
-    let name: String
-    var body: some View {
-        ZStack{
-            Rectangle()
-                .border(.white, width: 2)
-                .foregroundColor(.clear)
-            Text(name)
-                .foregroundColor(.white)
-                .font(.system(size: 17, weight: .bold))
-        }
-        .frame(width: 100 ,height: 40)
-    }
-}
 
 struct DialogueView_Previews: PreviewProvider {
     static var previews: some View {

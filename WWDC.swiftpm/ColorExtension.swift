@@ -19,5 +19,12 @@ struct ColorTheme {
     let mediumBlue = Color("mediumBlue")
     let darkerBlue = Color("darkerBlue")
     let darkerGray = Color("darkerGray")
+    
+    let primaryColor = Color("primaryColor")
+    let secondaryColor = Color("secondaryColor")
+    let terciaryColor = Color("terciaryColor")
+    let firstGradientColor = Color("firstGradientColor")
+    let secondGradientColor = Color("secondGradientColor")
+    
 }
 

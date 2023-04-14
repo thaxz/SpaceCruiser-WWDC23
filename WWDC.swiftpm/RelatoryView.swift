@@ -51,14 +51,20 @@ struct RelatoryView: View {
     
     var body: some View {
         ZStack {
-            Color.theme.darkerPurple
+            GameGradient()
                 .ignoresSafeArea()
             VStack(spacing: 30){
-                Text(title)
-                    .font(.system(size: 35, weight: .bold))
-                    .foregroundColor(.white)
-                
-                Image(image)
+                HStack(spacing: 16){
+                        Image(image)
+                            .resizable()
+                            .frame(width: 110, height: 110)
+                            .scaledToFit()
+                        
+                    Text(title)
+                        .font(.system(size: 40, weight: .heavy))
+                        .foregroundColor(.white)
+                    
+                }
                 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 20){
@@ -66,24 +72,32 @@ struct RelatoryView: View {
                         
                         RelatorySection(title: "Surface", textBody: surfaceText)
                         
-                        Text("Characteristics")
-                            .font(.system(size: 24, weight: .bold))
-                            .foregroundColor(.white)
-                        
-                        VStack(spacing: 10){
-                            CollectedInfo(text: "Atmosphere:", info: atmosphere)
-                            CollectedInfo(text: "Surface Gravity:", info: gravity)
-                            CollectedInfo(text: "Surface Pressure:", info: pressure)
-                            CollectedInfo(text: "Orbital Speed:", info: speed)
-                            CollectedInfo(text: "Orbital Period:", info: period)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundColor(Color.theme.primaryColor.opacity(0.30))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.theme.terciaryColor, lineWidth: 1)
+                                )
+                            VStack(alignment: .leading, spacing: 12){
+                                Text("Characteristics")
+                                    .font(.system(size: 24, weight: .bold))
+                                    .foregroundColor(.white)
+                                
+                                    CollectedInfo(text: "Atmosphere:", info: atmosphere)
+                                    CollectedInfo(text: "Surface Gravity:", info: gravity)
+                                    CollectedInfo(text: "Surface Pressure:", info: pressure)
+                                    CollectedInfo(text: "Orbital Speed:", info: speed)
+                                    CollectedInfo(text: "Orbital Period:", info: period)
+                                
+                            }
+                            .padding(16)
                         }
                     }
-                }
-                    
-                Button {
+                }                    
+                PrimaryButton(action: {
                     gameViewModel.gameScene = .home
-                } label: { PrimaryButton(name: "Main Menu", type: .earth) }
-                Spacer()
+                }, name: "Main Menu")
 
             }
             .padding(20)
@@ -95,13 +109,22 @@ struct RelatorySection: View {
     let title: String
     let textBody: String
     var body: some View {
-        VStack(spacing: 20){
-            Text(title)
-                .font(.system(size: 22, weight: .bold))
-                .foregroundColor(.white)
-            Text(textBody)
-                .font(.system(size: 20, weight: .medium))
-                .foregroundColor(.white)
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color.theme.primaryColor.opacity(0.30))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.theme.terciaryColor, lineWidth: 1)
+                )
+            VStack(alignment: .leading,spacing: 8){
+                Text(title)
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundColor(.white)
+                Text(textBody)
+                    .font(.system(size: 17, weight: .regular))
+                    .foregroundColor(.white)
+            }
+            .padding(16)
         }
     }
 }
@@ -112,11 +135,11 @@ struct CollectedInfo: View{
     var body: some View {
         HStack {
             Text(text)
-                .font(.system(size: 20, weight: .medium))
+                .font(.system(size: 17, weight: .semibold))
                 .foregroundColor(.white)
             Spacer()
             Text(info)
-                .font(.system(size: 20, weight: .medium))
+                .font(.system(size: 17, weight: .regular))
                 .foregroundColor(.white)
         }
     }

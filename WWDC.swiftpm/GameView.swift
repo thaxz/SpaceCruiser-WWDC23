@@ -13,18 +13,17 @@ struct GameView: View {
     var backgroundImage: String
     var groundImage: String
     let level: GameLevels
-    
     @EnvironmentObject var gameViewModel: GameViewModel
     
     init(level: GameLevels){
         self.level = level
         switch level {
         case .earth:
-            self.backgroundImage = "bgEarth"
-            self.groundImage = "earthGroundPH"
+            self.backgroundImage = "skyEarth"
+            self.groundImage = "groundEarth"
         case .planet:
-            self.backgroundImage = "bgMoon"
-            self.groundImage = "moonGroundPH"
+            self.backgroundImage = "skyMoon"
+            self.groundImage = "groundMoon"
         }
     }
     
@@ -33,45 +32,32 @@ struct GameView: View {
             Color.theme.darkerPurple
             Image(backgroundImage)
                 .resizable()
-                    ZStack(){
-                        VStack {
-                            Spacer()
-                            Image(groundImage)
-                                .resizable()
-                                .frame(height: 610)
-                                .transformEffect(
-                                    withAnimation(.spring()){
-                                        gameViewModel.planetRotation
-                                    }
-                            )
-                        }
-                        VStack{
-                            Spacer()
-                                .frame(height: 50)
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 135, height: 40)
-                                    .foregroundColor(.clear)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(.white, lineWidth: 2)
-                                )
-                                Text("00:\(gameViewModel.secondsPlaying)")
-                                    .font(.system(size: 20, weight: .semibold))
-                                    .foregroundColor(.white)
+            ZStack(){
+                VStack {
+                    Spacer()
+                    Image(groundImage)
+                        .resizable()
+                        .frame(height: 495)
+                        .transformEffect(
+                            withAnimation(.spring()){
+                                gameViewModel.planetRotation
                             }
-                            Spacer()
-                            Image(uiImage: images[gameViewModel.index])
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
-                                .transformEffect(gameViewModel.playerRotation)
-                            Spacer()
-                            Spacer()
-                            Spacer()
-                            Spacer()
-                        }
-                    }
+                        )
+                }
+                VStack{
+                    Spacer()
+                        .frame(height: 50)
+                    TimeContainer(time: gameViewModel.secondsPlaying)
+                    Spacer()
+                    Image(uiImage: images[gameViewModel.index])
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                        .transformEffect(gameViewModel.playerRotation)
+                    Spacer()
+                    Spacer()
+                }
+            }
             
             if gameViewModel.showGameOver {
                 GameOverView()
@@ -88,8 +74,15 @@ struct GameView: View {
                 }
             }
         }
+        .onAppear{
+            play("musicaTest")
+        }
+        .onChange(of: gameViewModel.showWin || gameViewModel.showGameOver, perform: { _ in
+            player.pause()
+        })
         .ignoresSafeArea()
     }
+    
 }
 
 

@@ -5,9 +5,9 @@
 //  Created by thaxz on 16/02/23.
 //
 
-import Foundation
 import SwiftUI
 import CoreMotion
+import AVFoundation
 
 class GameViewModel: ObservableObject {
     
@@ -17,7 +17,7 @@ class GameViewModel: ObservableObject {
     @Published var index = 0
     @Published var secondsPlayed: String = "00"
     @Published var secondsPlaying = 00
-    @Published var secondsNeeded: Int = 30
+    @Published var secondsNeeded: Int = 00
     
     var sprintSheetTimer: Timer?
     var rotationTimer: Timer?
@@ -34,7 +34,7 @@ class GameViewModel: ObservableObject {
     @Published var planetRotation = CGAffineTransform(rotationAngle: 0)
     
     lazy var motionManager = CMMotionManager()
-    
+  
     func animateSpaceship() {
             index = 0
             sprintSheetTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: {_ in
@@ -68,7 +68,7 @@ class GameViewModel: ObservableObject {
     }
     
     func pauseGame(){
-        secondsPlaying = 00
+        secondsPlaying = secondsNeeded
         showGameOver = false
         isMoving = false
         self.playerRotation = CGAffineTransform(rotationAngle: 0)
@@ -84,31 +84,21 @@ class GameViewModel: ObservableObject {
         UIApplication.shared.isIdleTimerDisabled = true
         self.showInstructions = true
         self.animateSpaceship()
-        secondsPlaying = 00
+        secondsPlaying = secondsNeeded
         self.checkWin()
         showGameOver = false
         isMoving = false
-        // pegando a data que começou
         startDate = Date()
-        // resetando angulos
+
         self.playerRotation = CGAffineTransform(rotationAngle: 0)
         self.planetRotation = CGAffineTransform(rotationAngle: 0)
         
-        // verificando se os sensores do dispositivo estão disponíveis
         if motionManager.isDeviceMotionAvailable {
-            // chamando método sempre que conseguir novas infos
             motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (data, error) in
-                // se não tiver erro, roda
                 if error == nil {
-                    // desembrulhando
                     if let data = data {
-                        //printando as informações dos eixos
-                        //print("x: ", data.gravity.x, "y: ", data.gravity.y, "z: ", data.gravity.z)
-                        // lógica
                         let angle = CGFloat(atan2(data.gravity.x, data.gravity.y) - .pi)
-                        // aplicando isso no angulo do player
                         self.playerRotation = CGAffineTransform(rotationAngle: angle)
-                        // se não estiver movimentando a terra, irá verificar se é gameover
                         if !self.isMoving {
                             self.checkGameOver()
                         }
@@ -116,7 +106,7 @@ class GameViewModel: ObservableObject {
                 }
             }
         }
-        // nível default terra gira a 4s
+      
         rotationTimer = Timer.scheduledTimer(withTimeInterval: self.rotationInterval, repeats: true, block: { (timer) in
             if self.showGameOver == false {
                 self.rotateWorld()
@@ -129,7 +119,6 @@ class GameViewModel: ObservableObject {
     }
     
     func rotateWorld(){
-        // Irá gerar um ângulo aleatório e rotacionar a terra a partir
         let randomAngle = Double(arc4random_uniform(120))/100 - 0.6
         print(randomAngle)
         withAnimation(.spring()){
@@ -145,8 +134,8 @@ class GameViewModel: ObservableObject {
     
     func checkWin(){
         winTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { time in
-            if self.secondsPlaying < self.secondsNeeded {
-                self.secondsPlaying += 1
+            if self.secondsPlaying > 0 {
+                self.secondsPlaying -= 1
                 print("\(self.secondsPlaying) SEGUNDOS" )
             } else {
                 print("WIN#######333333")
@@ -158,22 +147,15 @@ class GameViewModel: ObservableObject {
     }
     
     func checkGameOver(){
-        // vai pegar o angulo do jogador e do mundo e comparar
-        // angulo do mundo
         let worldAngle = atan2(Double(planetRotation.a), Double(planetRotation.b))
-        // do jogador
         let playerAngle = atan2(Double(playerRotation.a), Double(playerRotation.b))
-        // calculando a diferença, pegando apenas o valor positivo
         let difference = abs(worldAngle - playerAngle)
         
-        // se não estiver dentro daquela área vermelha
         if difference > 0.35 {
             pauseGame()
-            // quanto tempo se passou até o gameOver
             if let startDate = startDate {
                 secondsPlayed = String(format: "%.2f", Date().timeIntervalSince(startDate))
             }
-            // aparece a tela
             showInstructions = false
             showGameOver = true
             print("GAME OVER!!!!!1")

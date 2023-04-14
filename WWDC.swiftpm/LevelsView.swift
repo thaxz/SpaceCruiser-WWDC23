@@ -11,12 +11,12 @@ struct LevelsView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
         ZStack{
-            Color.theme.darkerPurple
-            Image("levelBgPH")
+            Image("levelsBg")
                 .resizable()
+                //.scaledToFill()
             VStack(spacing: 60){
                 Spacer()
-                Text("Choose your mission")
+                Text("Select your mission")
                     .font(.system(size: 45, weight: .bold))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)

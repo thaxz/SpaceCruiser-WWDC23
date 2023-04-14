@@ -11,9 +11,7 @@ struct HomeView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
         ZStack{
-            Color.theme.darkerPurple
-            Image("mainMenuPH")
-                .resizable()
+            GameGradient()
             VStack(spacing: 20){
                 Spacer()
                     .frame(height: 30)
@@ -22,13 +20,16 @@ struct HomeView: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Spacer()
-                Button {
-                    gameViewModel.gameScene = .levels
-                } label: { PrimaryButton(name: "Play", type: .earth) }
                 
-                Button {
+                
+                PrimaryButton(action: {
+                    gameViewModel.gameScene = .levels
+                }, name: "Play")
+                
+                SecondaryButton(action: {
                     gameViewModel.gameScene = .tutorial
-                } label: { SecondaryButton(name: "Tutorial") } .tint(.clear)
+                }, name: "Tutorial") .tint(.clear)
+                
                 Spacer()
                     .frame(height: 20)
                 Button {
