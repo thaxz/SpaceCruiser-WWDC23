@@ -11,14 +11,15 @@ struct HomeView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
         ZStack{
-            GameGradient()
+            Image("initialBackground")
+                .resizable()
             VStack(spacing: 20){
                 Spacer()
                     .frame(height: 30)
-                Text("SOME BIG NAME")
-                    .font(.system(size: 64, weight: .bold))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
+                Image("gameLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.vertical, 16)
                 Spacer()
                 
                 
@@ -28,20 +29,24 @@ struct HomeView: View {
                 
                 SecondaryButton(action: {
                     gameViewModel.gameScene = .tutorial
-                }, name: "Tutorial") .tint(.clear)
+                }, name: "Tutorial")
+                
+                SecondaryButton(action: {
+                    gameViewModel.gameScene = .tutorial
+                }, name: "Credits")
                 
                 Spacer()
-                    .frame(height: 20)
-                Button {
-                    gameViewModel.gameScene = .credits
-                } label: {
-                    ZStack{
-                        Text("credits")
-                            .foregroundColor(.white)
-                            .font(.system(size: 22, weight: .bold)).underline()
-                    } .tint(.clear)
-                    .frame(height: 50)
-                }
+                    .frame(height: 30)
+//                Button {
+//                    gameViewModel.gameScene = .credits
+//                } label: {
+//                    ZStack{
+//                        Text("credits")
+//                            .foregroundColor(.black)
+//                            .font(.system(size: 22, weight: .bold)).underline()
+//                    } .tint(.clear)
+//                    .frame(height: 50)
+//                }
             }
             .padding(16)
             .padding(.bottom, 16)
