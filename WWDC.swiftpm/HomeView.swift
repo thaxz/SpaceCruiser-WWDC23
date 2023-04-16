@@ -13,9 +13,10 @@ struct HomeView: View {
         ZStack{
             Image("initialBackground")
                 .resizable()
+                .ignoresSafeArea()
             VStack(spacing: 20){
-                Spacer()
-                    .frame(height: 30)
+//                Spacer()
+//                    .frame(height: 30)
                 Image("gameLogo")
                     .resizable()
                     .scaledToFit()
@@ -24,34 +25,21 @@ struct HomeView: View {
                 
                 
                 PrimaryButton(action: {
-                    gameViewModel.gameScene = .levels
+                    gameViewModel.gameScene = .tutorial
                 }, name: "Play")
                 
                 SecondaryButton(action: {
-                    gameViewModel.gameScene = .tutorial
-                }, name: "Tutorial")
-                
-                SecondaryButton(action: {
-                    gameViewModel.gameScene = .tutorial
+                    gameViewModel.gameScene = .credits
                 }, name: "Credits")
                 
-                Spacer()
-                    .frame(height: 30)
-//                Button {
-//                    gameViewModel.gameScene = .credits
-//                } label: {
-//                    ZStack{
-//                        Text("credits")
-//                            .foregroundColor(.black)
-//                            .font(.system(size: 22, weight: .bold)).underline()
-//                    } .tint(.clear)
-//                    .frame(height: 50)
-//                }
+//                Spacer()
+//                    .frame(height: 30)
+
             }
             .padding(16)
             .padding(.bottom, 16)
         }
-        .ignoresSafeArea()
+        //.ignoresSafeArea()
     }
 }
 

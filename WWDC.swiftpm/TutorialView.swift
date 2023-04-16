@@ -35,11 +35,12 @@ struct TutorialView: View {
                 Spacer()
                 
                 PrimaryButton(action: {
-                    gameViewModel.gameScene = .home
-                }, name: "Main Menu").tint(.clear)
+                    gameViewModel.gameScene = .levels
+                }, name: "Next").tint(.clear)
                 
-                //Spacer()
-            }.padding(16)
+            }
+            .padding(16)
+            .padding(.vertical, 16)
         }
     }
 }

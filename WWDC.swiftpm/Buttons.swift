@@ -24,7 +24,7 @@ struct PrimaryButton: View {
                     )
                 Text(name)
                     .foregroundColor(.white)
-                    .font(.system(size: 22, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
             }
             .frame(height: 50)
         }
@@ -40,14 +40,14 @@ struct SecondaryButton: View {
         } label: {
             ZStack{
                 RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(Color.theme.secondaryColor.opacity(0.30))
+                    .foregroundColor(Color.theme.secondaryColor.opacity(0.60))
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(.white, lineWidth: 2)
                     )
                 Text(name)
                     .foregroundColor(.white)
-                    .font(.system(size: 22, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
             }
             .frame(height: 50)
         }
