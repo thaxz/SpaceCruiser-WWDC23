@@ -21,15 +21,19 @@ struct CreditsView: View {
                     
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 16){
-                            CreditsSection(haveHeader: true, headerName: "Design", type: "design", source: "some link", author: "someone")
+                            CreditsSection(haveHeader: true, headerName: "XMark Icon", type: "Design", source: "https://www.flaticon.com/free-icons/close", author: "Pixel Perfect")
+                            
+                            CreditsSection(haveHeader: true, headerName: "Tick Icon", type: "Design", source: "https://www.flaticon.com/free-icons/tick", author: "Icon Wind")
                             
                             CreditsSection(haveHeader: true, headerName: "Sound Effects", type: "design", source: "some link", author: "someone")
                             
-                            CreditsSection(haveHeader: true, headerName: "Custom Fonts", type: "design", source: "some link", author: "someone")
+                            CreditsSection(haveHeader: true, headerName: "Nancy Grace Biography", type: "Information", source: "https://solarsystem.nasa.gov/people/225/nancy-roman-1925-2018/", author: "Nasa")
                             
-                            CreditsSection(haveHeader: true, headerName: "Information", type: "design", source: "some link", author: "someone")
+                            CreditsSection(haveHeader: true, headerName: "Mae Jemison Biography", type: "Information", source: "https://www.womenshistory.org/education-resources/biographies/mae-jemison", author: "Kerri Lee Alexander")
                             
-                            CreditsSection(haveHeader: false, headerName: "Anything else", type: "design", source: "some link", author: "someone")
+                            CreditsSection(haveHeader: true, headerName: "Earth Characteristics", type: "Information", source: "https://solarsystem.nasa.gov/planets/earth/overview/", author: "Phil Davis & Steve Carney")
+                            
+                            CreditsSection(haveHeader: true, headerName: "Moon Characteristics", type: "Information", source: "https://solarsystem.nasa.gov/moons/earths-moon/overview/.", author: "Phil Davis & Steve Carney")
                         }
                     }
                     PrimaryButton(action: {
@@ -80,7 +84,8 @@ struct CreditsSection: View {
                         .font(.system(size: 16, weight: .regular))
                     Spacer()
                     Text(source)
-                        .font(.system(size: 16, weight: .regular))
+                        .font(.system(size: 14, weight: .regular))
+                        .multilineTextAlignment(.trailing)
                 }
                 HStack {
                     Text("Author:")

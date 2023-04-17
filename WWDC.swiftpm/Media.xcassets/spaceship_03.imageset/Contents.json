@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "spaceship_04.png",
+      "filename" : "spaceship_03.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "spaceship_04@2x.png",
+      "filename" : "spaceship_03@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "spaceship_04@3x.png",
+      "filename" : "spaceship_03@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
