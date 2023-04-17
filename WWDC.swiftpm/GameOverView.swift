@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: Appears when you lose the game
+// MARK: Appears if the player loses the game
 
 struct GameOverView: View {
     @EnvironmentObject var gameViewModel: GameViewModel

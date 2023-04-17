@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: Level selection screen
+
 struct LevelsView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: Initial screen of the game
+
 struct HomeView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
@@ -15,15 +17,12 @@ struct HomeView: View {
                 .resizable()
                 .ignoresSafeArea()
             VStack(spacing: 20){
-//                Spacer()
-//                    .frame(height: 30)
                 Image("gameLogo")
                     .resizable()
                     .scaledToFit()
                     .padding(.vertical, 16)
                 Spacer()
-                
-                
+        
                 PrimaryButton(action: {
                     gameViewModel.gameScene = .tutorial
                 }, name: "Play")
@@ -31,15 +30,10 @@ struct HomeView: View {
                 SecondaryButton(action: {
                     gameViewModel.gameScene = .credits
                 }, name: "Credits")
-                
-//                Spacer()
-//                    .frame(height: 30)
-
             }
             .padding(16)
             .padding(.bottom, 16)
         }
-        //.ignoresSafeArea()
     }
 }
 

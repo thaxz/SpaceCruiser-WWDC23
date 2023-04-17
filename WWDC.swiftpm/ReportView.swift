@@ -1,5 +1,5 @@
 //
-//  RelatoryView.swift
+//  ReportView.swift
 //  CruiserTeste
 //
 //  Created by thaxz on 12/03/23.
@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-struct RelatoryView: View {
+// MARK: Report screen that appears if the player wins the game.
+
+struct ReportView: View {
+    
     @EnvironmentObject var gameViewModel: GameViewModel
     let level: GameLevels
-    
     let data: PlanetsInfo = PlanetsInfo()
     
     let title: String
@@ -63,14 +65,12 @@ struct RelatoryView: View {
                     Text(title)
                         .font(.system(size: 40, weight: .heavy))
                         .foregroundColor(.white)
-                    
                 }
                 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 20){
-                        RelatorySection(title: "About", textBody: aboutText)
-                        
-                        RelatorySection(title: "Surface", textBody: surfaceText)
+                        ReportSection(title: "About", textBody: aboutText)
+                        ReportSection(title: "Surface", textBody: surfaceText)
                         
                         ZStack {
                             RoundedRectangle(cornerRadius: 8)
@@ -81,7 +81,7 @@ struct RelatoryView: View {
                                 )
                             VStack(alignment: .leading, spacing: 12){
                                 Text("Characteristics")
-                                    .font(.system(size: 24, weight: .bold))
+                                    .font(.system(size: 22, weight: .bold))
                                     .foregroundColor(.white)
                                 
                                     CollectedInfo(text: "Atmosphere:", info: atmosphere)
@@ -89,7 +89,6 @@ struct RelatoryView: View {
                                     CollectedInfo(text: "Surface Pressure:", info: pressure)
                                     CollectedInfo(text: "Orbital Speed:", info: speed)
                                     CollectedInfo(text: "Orbital Period:", info: period)
-                                
                             }
                             .padding(16)
                         }
@@ -98,14 +97,13 @@ struct RelatoryView: View {
                 PrimaryButton(action: {
                     gameViewModel.gameScene = .home
                 }, name: "Main Menu")
-
             }
             .padding(20)
         }
     }
 }
 
-struct RelatorySection: View {
+struct ReportSection: View {
     let title: String
     let textBody: String
     var body: some View {
@@ -145,9 +143,9 @@ struct CollectedInfo: View{
     }
 }
 
-struct RelatoryView_Previews: PreviewProvider {
+struct ReportView_Previews: PreviewProvider {
     static var previews: some View {
-        RelatoryView(level: .earth)
+        ReportView(level: .earth)
             .environmentObject(dev.gameVM)
     }
 }

@@ -31,8 +31,8 @@ struct ContentView: View {
         case .tutorial:
             TutorialView()
                 .environmentObject(gameViewModel)
-        case .relatory:
-            RelatoryView(level: gameViewModel.selectedLevel)
+        case .report:
+            ReportView(level: gameViewModel.selectedLevel)
                 .environmentObject(gameViewModel)
         }
     }

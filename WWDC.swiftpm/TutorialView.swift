@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: Tutorial View that appears before playing the game
+
 struct TutorialView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {

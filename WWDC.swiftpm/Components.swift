@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: Creating components in order to build reusable blocks of functionality and making code modular
 
 
-// Gradient that is used on CreditsView, RelatoryView and TutorialView
+// Gradient that is used on CreditsView, ReportView and TutorialView
 struct GameGradient: View{
     var body: some View {
         LinearGradient(colors: [Color.theme.firstGradientColor, Color.theme.secondGradientColor], startPoint: .top, endPoint: .bottom)

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: Where the game happens
+
 struct GameView: View {
     
     let images = (0...3).map { UIImage(named: "spaceship_0\($0)")!}
