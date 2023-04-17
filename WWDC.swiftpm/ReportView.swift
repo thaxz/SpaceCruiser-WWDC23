@@ -19,6 +19,8 @@ struct ReportView: View {
     let image: String
     let aboutText: String
     let surfaceText: String
+    let structureText: String
+    let curiosityText: String
     let atmosphere: String
     let gravity: String
     let pressure: String
@@ -38,6 +40,8 @@ struct ReportView: View {
             self.pressure = data.earthPressure
             self.speed = data.earthSpeed
             self.period = data.earthPeriod
+            self.structureText = data.earthStructure
+            self.curiosityText = data.earthCuriosity
         case .moon:
             self.title = data.moonTitle
             self.image = data.moonImage
@@ -48,6 +52,8 @@ struct ReportView: View {
             self.pressure = data.moonPressure
             self.speed = data.moonSpeed
             self.period = data.moonPeriod
+            self.structureText = data.moonStructure
+            self.curiosityText = data.moonCuriosity
         }
     }
     
@@ -92,6 +98,9 @@ struct ReportView: View {
                             }
                             .padding(16)
                         }
+                        ReportSection(title: "Structure", textBody: structureText)
+                        ReportSection(title: "Curiosity", textBody: curiosityText)
+                        
                     }
                 }                    
                 PrimaryButton(action: {
