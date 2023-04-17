@@ -16,5 +16,10 @@ Space Cruiser's logic involves piloting a spacecraft and the device's motion is 
 First, download the code project and open the app in Xcode/Playground. After that, since this game needs the accelerometer data, you need to built on an actual device.
 
 ## Credits
-- SpriteKit Analog Stick by [MitrophD](https://github.com/MitrophD)
-- "Nice Kitty" by [Cimba](https://cimba.newgrounds.com/)
+- "Close Icon" by Pixel Perfect (https://www.flaticon.com/free-icons/close)
+- "Tick Icon" by Icon Wind (https://www.flaticon.com/free-icons/tick)
+- "Nancy Grace Biography" by Nasa (https://solarsystem.nasa.gov/people/225/nancy-roman-1925-2018/)
+- "Mae Jemison Biography" by Kerri Lee Alexander (https://www.womenshistory.org/education-resources/biographies/mae-jemison)
+- "Earth Characteristics" by Nasa (https://solarsystem.nasa.gov/planets/earth/overview/)
+- "Moon Characteristics" by Nasa (https://solarsystem.nasa.gov/moons/earths-moon/overview/)
+

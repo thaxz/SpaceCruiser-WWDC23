@@ -23,7 +23,7 @@ struct CreditsView: View {
                 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 16){
-                        CreditsSection(headerName: "XMark Icon", type: "Design", source: "https://www.flaticon.com/free-icons/close", author: "Pixel Perfect")
+                        CreditsSection(headerName: "Close Icon", type: "Design", source: "https://www.flaticon.com/free-icons/close", author: "Pixel Perfect")
                         
                         CreditsSection(headerName: "Tick Icon", type: "Design", source: "https://www.flaticon.com/free-icons/tick", author: "Icon Wind")
                         
@@ -33,9 +33,9 @@ struct CreditsView: View {
                         
                         CreditsSection(headerName: "Mae Jemison Biography", type: "Information", source: "https://www.womenshistory.org/education-resources/biographies/mae-jemison", author: "Kerri Lee Alexander")
                         
-                        CreditsSection(headerName: "Earth Characteristics", type: "Information", source: "https://solarsystem.nasa.gov/planets/earth/overview/", author: "Phil Davis & Steve Carney")
+                        CreditsSection(headerName: "Earth Characteristics", type: "Information", source: "https://solarsystem.nasa.gov/planets/earth/overview/", author: "Nasa")
                         
-                        CreditsSection(headerName: "Moon Characteristics", type: "Information", source: "https://solarsystem.nasa.gov/moons/earths-moon/overview/.", author: "Phil Davis & Steve Carney")
+                        CreditsSection(headerName: "Moon Characteristics", type: "Information", source: "https://solarsystem.nasa.gov/moons/earths-moon/overview/", author: "Nasa")
                     }
                 }
                 PrimaryButton(action: {
