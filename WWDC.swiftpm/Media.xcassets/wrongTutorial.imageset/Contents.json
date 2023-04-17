@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "wrongSpaceshipPH.png",
+      "filename" : "wrongTutorial.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "wrongSpaceshipPH@2x.png",
+      "filename" : "wrongTutorial@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "wrongSpaceshipPH@3x.png",
+      "filename" : "wrongTutorial@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

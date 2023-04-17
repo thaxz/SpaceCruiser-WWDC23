@@ -77,13 +77,11 @@ struct TutorialContainer: View {
                     .frame(width: 48, height: 48)
                     .offset(x: 10, y: 15)
             }
-                Image(type == 0 ? "wrongSpaceshipPH" : "rightSpaceshipPH")
+                Image(type == 0 ? "wrongTutorial" : "rightTutorial")
                     .resizable()
-                    .frame(
-                        width: type == 0 ? 110 : 70,
-                        height: type == 0 ? 100 : 85)
                     .scaledToFit()
         }
+        .frame(width: 150,height: 150)
     }
 }
 
