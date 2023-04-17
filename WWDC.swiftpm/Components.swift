@@ -154,7 +154,7 @@ struct ComponentsTest_PreviewProvider: PreviewProvider {
                 Color.black
                     .ignoresSafeArea()
                 VStack {
-                    DialogueContainer(text: "Testing dialogue", type: .planet)
+                    DialogueContainer(text: "Testing dialogue", type: .moon)
                     HStack{
                         LevelContainer(type: .earth)
                         TutorialContainer(type: 1)

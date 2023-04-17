@@ -57,7 +57,7 @@ class GameViewModel: ObservableObject {
         case .earth:
             self.secondsNeeded = 30
             self.rotationInterval = 4
-        case .planet:
+        case .moon:
             self.secondsNeeded = 45
             self.rotationInterval = 2
         }

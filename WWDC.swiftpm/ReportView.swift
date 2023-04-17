@@ -38,7 +38,7 @@ struct ReportView: View {
             self.pressure = data.earthPressure
             self.speed = data.earthSpeed
             self.period = data.earthPeriod
-        case .planet:
+        case .moon:
             self.title = data.moonTitle
             self.image = data.moonImage
             self.aboutText = data.aboutMoon

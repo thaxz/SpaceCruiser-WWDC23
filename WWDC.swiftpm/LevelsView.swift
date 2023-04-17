@@ -29,10 +29,10 @@ struct LevelsView: View {
                         gameViewModel.playAgain()
                     } label: { LevelContainer(type: .earth) }
                     Button {
-                        gameViewModel.selectedLevel = .planet
+                        gameViewModel.selectedLevel = .moon
                         gameViewModel.gameScene = .dialogue
                         gameViewModel.playAgain()
-                    } label: { LevelContainer(type: .planet)}
+                    } label: { LevelContainer(type: .moon)}
                     Spacer()
                 }
             }

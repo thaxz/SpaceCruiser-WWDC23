@@ -26,7 +26,7 @@ enum GameScenes: String {
 enum GameLevels: String {
     
     case earth
-    case planet
+    case moon
 }
 
 // All types of buttons

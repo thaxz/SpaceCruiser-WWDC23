@@ -30,7 +30,7 @@ struct DialogueView: View {
             self.location = "EARTH'S STATION"
             self.dialogue = Dialogues().earth
             self.character = "characterEarth"
-        case .planet:
+        case .moon:
             self.background = "labMoon"
             self.location = "MOON'S STATION"
             self.dialogue = Dialogues().planet
