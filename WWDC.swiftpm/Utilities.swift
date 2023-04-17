@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 
+// MARK: Enums that I used through the game
+
+// All types of views
 enum GameScenes: String {
     
     case home
@@ -16,15 +19,17 @@ enum GameScenes: String {
     case gameScreen
     case credits
     case tutorial
-    case relatory
+    case report
 }
 
+// All types of levels
 enum GameLevels: String {
     
     case earth
-    case planet
+    case moon
 }
 
+// All types of buttons
 enum ButtonTypes: String {
 
     case primary

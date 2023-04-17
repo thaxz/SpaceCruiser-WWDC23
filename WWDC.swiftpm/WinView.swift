@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: Appears if the user wins the game
+
 struct WinView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
@@ -16,17 +18,14 @@ struct WinView: View {
                 .ignoresSafeArea()
             
             ZStack {
-                
                 RoundedRectangle(cornerRadius: 16)
                     .foregroundColor(Color.theme.secondaryColor)
-                
                 VStack(spacing: 8){
                     Spacer()
                     Text("MISSION COMPLETED")
                         .font(.system(size: 42, weight: .heavy))
                         .foregroundColor(.white)
                     Spacer()
-                    
                     ZStack(alignment: .center){
                         RoundedRectangle(cornerRadius: 8)
                             .foregroundColor(Color.theme.primaryColor.opacity(0.30))
@@ -38,20 +37,15 @@ struct WinView: View {
                             Text("Congratulations! You had a nice flight")
                                 .font(.system(size: 22, weight: .bold))
                                 .foregroundColor(.white)
-                            
                             Image("winImage")
-
-                            
-                            Text("Check your relatory to see the information you've collected")
+                            Text("Check your report to see the information you've collected")
                                 .font(.system(size: 17, weight: .regular))
                                 .foregroundColor(.white)
                         }
                         .padding(22)
                     }
                     .frame(height: 350)
-                    
                     Spacer()
-                    
                     HStack{
                         SmallSecondaryButton(action: {
                             gameViewModel.showGameOver = false
@@ -65,9 +59,8 @@ struct WinView: View {
                         SmallPrimaryButton(action: {
                             gameViewModel.showGameOver = false
                             gameViewModel.pauseGame()
-                            gameViewModel.gameScene = .relatory
-                        }, name: "See Relatory", width: 150, heigth: 50)
-                        
+                            gameViewModel.gameScene = .report
+                        }, name: "See Report", width: 150, heigth: 50)
                     }
                     Spacer()
                 }

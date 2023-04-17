@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+// MARK: Container that holds the time remaining for each level, it's used on GameView
+
 struct TimeContainer: View {
     var time: Int
     var body: some View {

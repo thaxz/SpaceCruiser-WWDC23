@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+// Primary button component
 struct PrimaryButton: View {
     let action: () -> Void
     let name: String
@@ -24,13 +25,14 @@ struct PrimaryButton: View {
                     )
                 Text(name)
                     .foregroundColor(.white)
-                    .font(.system(size: 22, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
             }
             .frame(height: 50)
         }
     }
 }
 
+// Secondary button component
 struct SecondaryButton: View {
     let action: () -> Void
     let name: String
@@ -40,20 +42,21 @@ struct SecondaryButton: View {
         } label: {
             ZStack{
                 RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(Color.theme.secondaryColor.opacity(0.30))
+                    .foregroundColor(Color.theme.secondaryColor.opacity(0.60))
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(.white, lineWidth: 2)
                     )
                 Text(name)
                     .foregroundColor(.white)
-                    .font(.system(size: 22, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
             }
             .frame(height: 50)
         }
     }
 }
 
+// Size variation for primary button
 struct SmallPrimaryButton: View {
     let action: () -> Void
     let name: String
@@ -79,6 +82,7 @@ struct SmallPrimaryButton: View {
     }
 }
 
+// Size variation for secondary button
 struct SmallSecondaryButton: View {
     let action: () -> Void
     let name: String
@@ -116,6 +120,5 @@ struct Buttons_PreviewProvider: PreviewProvider {
                     SecondaryButton(action: {}, name: "secondary")
                 }
             }
-        
     }
 }

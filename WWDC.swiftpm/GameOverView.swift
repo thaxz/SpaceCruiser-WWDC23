@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: Appears if the player loses the game
+
 struct GameOverView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
@@ -57,17 +59,18 @@ struct GameOverView: View {
                     
                     HStack{
                         SmallSecondaryButton(action: {
-                            gameViewModel.playAgain()
                             gameViewModel.showGameOver = false
+                            gameViewModel.pauseGame()
+                            gameViewModel.gameScene = .home
                         }, name: "Main Menu", width: 150, heigth: 50)
                         
                         Spacer()
                             .frame(width: 16)
                         
                         SmallPrimaryButton(action: {
+                            gameViewModel.playAgain()
                             gameViewModel.showGameOver = false
-                            gameViewModel.pauseGame()
-                            gameViewModel.gameScene = .home
+                            
                         }, name: "Try Again", width: 150, heigth: 50)
                     }
                     Spacer()

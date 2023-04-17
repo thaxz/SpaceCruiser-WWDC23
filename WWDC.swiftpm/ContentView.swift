@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: Defines which view is appearing on the screen
+
 struct ContentView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
@@ -29,8 +31,8 @@ struct ContentView: View {
         case .tutorial:
             TutorialView()
                 .environmentObject(gameViewModel)
-        case .relatory:
-            RelatoryView(level: gameViewModel.selectedLevel)
+        case .report:
+            ReportView(level: gameViewModel.selectedLevel)
                 .environmentObject(gameViewModel)
         }
     }
