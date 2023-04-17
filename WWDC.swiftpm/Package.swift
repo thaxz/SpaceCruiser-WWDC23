@@ -8,19 +8,19 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "WWDC",
+    name: "Space Cruiser",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "WWDC",
+            name: "Space Cruiser",
             targets: ["AppModule"],
             bundleIdentifier: "br.ufpe.cin.academy.tmc4.WWDC",
             teamIdentifier: "5S88AY6J4R",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .rocket),
+            appIcon: .asset("AppIcon"),
             accentColor: .presetColor(.pink),
             supportedDeviceFamilies: [
                 .pad,
@@ -37,7 +37,10 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: "."
+            path: ".",
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )

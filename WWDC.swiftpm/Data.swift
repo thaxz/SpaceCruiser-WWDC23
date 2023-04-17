@@ -11,23 +11,23 @@ struct PlanetsInfo {
     
     let aboutEarth: String = "Earth is the fifth largest planet in our solar system. It's the only planet known to harbor life and has an atmosphere composed mainly of nitrogen and oxygen."
     let earthSurface: String = "Approximately 71% of Earth's surface is covered in water, while the remaining is composed of land. The land masses are composed of a variety of landscapes, from mountains and deserts to forests and plains."
-    let earthTitle: String = "EARTH RELATORY"
-    let earthImage: String = "earthPH"
+    let earthTitle: String = "EARTH'S REPORT"
+    let earthImage: String = "earthPlanet"
     let earthAtmosphere: String = "Nitrogen, Oxygen"
     let earthGravity: String = "9.80 m/s²"
     let earthPressure: String = "101.32 kPa"
     let earthSpeed: String = "29.78 km/s"
-    let earthPeriod: String = "365 d"
+    let earthPeriod: String = "365 days"
     
     let aboutMoon: String = "The Moon is Earth's only natural satellite. It is the fifth largest satellite in the Solar System and the largest and most massive relative to its parent planet. Moon is also known for its phases, which are caused by the changing position as it orbits around Earth, which causes tides on our planet."
     let moonSurface: String = "The Moon's surface is covered in a layer of fine dust and rocky material which was created by the impact of meteorites and other celestial bodies over billions of years. The surface features include craters, mountains, and valleys, formed by these impacts and other geological processes."
-    let moonTitle: String = "MOON RELATORY"
-    let moonImage: String = "moonPH"
+    let moonTitle: String = "MOON'S REPORT"
+    let moonImage: String = "moonPlanet"
     let moonAtmosphere: String = "Lacks any significant"
     let moonGravity: String = "1.62 m/s²"
     let moonPressure: String = "10⁻⁷ pa"
     let moonSpeed: String = "1.02 km/s"
-    let moonPeriod: String = "27 d"
+    let moonPeriod: String = "27 days"
 }
 
 struct Dialogues{

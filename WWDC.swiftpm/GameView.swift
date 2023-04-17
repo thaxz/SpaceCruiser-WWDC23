@@ -7,13 +7,14 @@
 
 import SwiftUI
 
+// MARK: Where the game happens
+
 struct GameView: View {
     
     let images = (0...3).map { UIImage(named: "spaceship_0\($0)")!}
     var backgroundImage: String
     var groundImage: String
     let level: GameLevels
-    
     @EnvironmentObject var gameViewModel: GameViewModel
     
     init(level: GameLevels){
@@ -22,7 +23,7 @@ struct GameView: View {
         case .earth:
             self.backgroundImage = "skyEarth"
             self.groundImage = "groundEarth"
-        case .planet:
+        case .moon:
             self.backgroundImage = "skyMoon"
             self.groundImage = "groundMoon"
         }
@@ -30,55 +31,41 @@ struct GameView: View {
     
     var body: some View {
         ZStack {
-            Color.theme.darkerPurple
             Image(backgroundImage)
                 .resizable()
-                    ZStack(){
-                        VStack {
-                            Spacer()
-                            Image(groundImage)
-                                .resizable()
-                                .frame(height: 495)
-                                .transformEffect(
-                                    withAnimation(.spring()){
-                                        gameViewModel.planetRotation
-                                    }
-                            )
-                        }
-                        VStack{
-                            Spacer()
-                                .frame(height: 50)
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 135, height: 40)
-                                    .foregroundColor(.clear)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(.white, lineWidth: 2)
-                                )
-                                Text("00:\(gameViewModel.secondsPlaying)")
-                                    .font(.system(size: 20, weight: .semibold))
-                                    .foregroundColor(.white)
+            ZStack(){
+                VStack {
+                    Spacer()
+                    Image(groundImage)
+                        .resizable()
+                        .frame(height: 495)
+                        .transformEffect(
+                            withAnimation(.spring()){
+                                gameViewModel.planetRotation
                             }
-                            Spacer()
-                            Image(uiImage: images[gameViewModel.index])
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
-                                .transformEffect(gameViewModel.playerRotation)
-                            Spacer()
-                            Spacer()
-                            //Spacer()
-                            //Spacer()
-                        }
-                    }
-            
+                        )
+                }
+                VStack{
+                    Spacer()
+                        .frame(height: 50)
+                    TimeContainer(time: gameViewModel.secondsPlaying)
+                    Spacer()
+                    Image(uiImage: images[gameViewModel.index])
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                        .transformEffect(gameViewModel.playerRotation)
+                    Spacer()
+                    Spacer()
+                }
+            }
+            // Changes popup according to game status
             if gameViewModel.showGameOver {
                 GameOverView()
-            }
+            } // game over
             if gameViewModel.showWin {
                 WinView()
-            }
+            } // win
             if gameViewModel.showInstructions {
                 VStack{
                     Spacer()
@@ -86,8 +73,15 @@ struct GameView: View {
                     InstructionsBanner(timeNedeed: gameViewModel.secondsNeeded)
                     Spacer()
                 }
-            }
+            } // showing instructions at the beginning
         }
+        .onAppear{
+            play("musicaTest")
+        }
+        // Music stops if the game is interrupted
+        .onChange(of: gameViewModel.showWin || gameViewModel.showGameOver, perform: { _ in
+            player.pause()
+        })
         .ignoresSafeArea()
     }
 }

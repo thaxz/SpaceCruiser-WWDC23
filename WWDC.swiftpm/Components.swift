@@ -8,45 +8,29 @@
 import Foundation
 import SwiftUI
 
-struct PrimaryButton: View {
-    let name: String
-    let type: GameLevels
+// MARK: Creating components in order to build reusable blocks of functionality and making code modular
+
+
+// Gradient that is used on CreditsView, ReportView and TutorialView
+struct GameGradient: View{
     var body: some View {
-        ZStack{
-            Rectangle()
-                .foregroundColor(type == .earth ? Color.theme.mediumPurple : Color.theme.mediumBlue)
-                .border(.white, width: 2)
-            Text(name)
-                .foregroundColor(.white)
-                .font(.system(size: 22, weight: .bold))
-        }
-        .frame(height: 50)
+        LinearGradient(colors: [Color.theme.firstGradientColor, Color.theme.secondGradientColor], startPoint: .top, endPoint: .bottom)
     }
 }
 
-struct SecondaryButton: View {
-    let name: String
-    var body: some View {
-        ZStack{
-            Rectangle()
-                .border(.white, width: 2)
-            Text(name)
-                .foregroundColor(.white)
-                .font(.system(size: 22, weight: .bold))
-        }
-        .frame(height: 50)
-    }
-}
-
+// Container that holds the dialogue and it's used on DialogueView
 struct DialogueContainer: View {
     var text: String
     let type: GameLevels
     var body: some View {
         ZStack(alignment: .topLeading){
-            Rectangle()
-                .foregroundColor(Color.theme.darkerBlue)
-                .opacity(0.90)
-                .border(.white, width: 3)
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color.theme.secondaryColor)
+                .opacity(0.80)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(.white, lineWidth: 3)
+                )
             Text(text)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(.white)
@@ -56,20 +40,21 @@ struct DialogueContainer: View {
     }
 }
 
+// Customizable container that displays available levels and it's used on LevelsView
 struct LevelContainer: View {
     let type: GameLevels
     var body: some View {
         VStack {
             ZStack{
-                RoundedRectangle(cornerRadius: 30)
+                RoundedRectangle(cornerRadius: 24)
                     .frame(width: 150,height: 150)
-                    .foregroundColor(Color.theme.darkerBlue)
+                    .foregroundColor(Color.theme.secondaryColor)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 30)
-                            .stroke(.white, lineWidth: 4)
-                            .shadow(color: .white, radius: 2)
+                        RoundedRectangle(cornerRadius: 24)
+                            .stroke(.white, lineWidth: 3)
+                            .shadow(color: .white, radius: 1)
                     )
-                Image(type == .earth ? "earthPH" : "moonPH")
+                Image(type == .earth ? "earthPlanet" : "moonPlanet")
                     .resizable()
                     .frame(width: 110, height: 110)
                     .scaledToFit()
@@ -81,33 +66,33 @@ struct LevelContainer: View {
     }
 }
 
+// Customizable container that displays tutorial illustrations and it's used on TutorialView
 struct TutorialContainer: View {
     let type: Int
     var body: some View {
         ZStack(alignment: type == 0 ? .bottomLeading : .bottom){
             ZStack(alignment: .bottomTrailing){
-                RoundedRectangle(cornerRadius: 30)
+                RoundedRectangle(cornerRadius: 16)
                     .frame(width: 150,height: 150)
-                    .foregroundColor(Color.theme.darkerPurple)
+                    .foregroundColor(Color.theme.primaryColor.opacity(0.30))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 30)
-                            .stroke(.white, lineWidth: 2)
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.white, lineWidth:3)
                 )
                 Image(type == 0 ? "xmarkPH" : "checkmarkPH")
                     .resizable()
                     .frame(width: 48, height: 48)
                     .offset(x: 10, y: 15)
             }
-                Image(type == 0 ? "wrongSpaceshipPH" : "rightSpaceshipPH")
+                Image(type == 0 ? "wrongTutorial" : "rightTutorial")
                     .resizable()
-                    .frame(
-                        width: type == 0 ? 110 : 70,
-                        height: type == 0 ? 100 : 85)
                     .scaledToFit()
         }
+        .frame(width: 150,height: 150)
     }
 }
 
+// Customizable container that displays selected level location and it's used on DialogueView
 struct LocationContainer: View {
     let type: GameLevels
     var body: some View{
@@ -116,62 +101,67 @@ struct LocationContainer: View {
                 .padding(.leading)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .frame(height: 55)
-                .background(Color.theme.darkerBlue)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .foregroundColor(Color.theme.secondaryColor)
+                    )
                 .font(.system(size: 22, weight: .bold))
                 .foregroundColor(.white)
-                .shadow(color: .black.opacity(0.2), radius: 3)
+                .shadow(color: .black.opacity(0.5), radius: 3)
             Spacer()
                 .frame(width: 60)
         }
     }
 }
 
+// Component that displays how much time you need to play according to each level. It's used on GameView
 struct InstructionsBanner: View {
     let timeNedeed: Int
     var body: some View {
         ZStack{
-            RoundedRectangle(cornerRadius: 50)
-                .foregroundColor(.black.opacity(0.80))
+            RoundedRectangle(cornerRadius: 24)
+                .foregroundColor(Color.theme.secondaryColor)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 50)
-                        .stroke(.white, lineWidth: 2))
-            ZStack {
-                HStack{
-                    Image("leftArrow")
-                    Spacer()
-                    Image("rightArrow")
-                } .padding(4)
-                
-                HStack {
-                    Spacer()
-                    Text("TILT FOR \n \(timeNedeed) \n SECONDS")
+                    RoundedRectangle(cornerRadius: 24)
+                        .stroke(Color.theme.terciaryColor, lineWidth: 1))
+            VStack {
+                    Text("Tilt for \n \(timeNedeed) seconds")
                         .foregroundColor(.white)
-                        .font(.system(size: 30, weight: .bold))
+                        .font(.system(size: 30, weight: .heavy))
                     .multilineTextAlignment(.center)
+                HStack{
+                    Image(systemName: "arrow.backward")
+                        .resizable()
+                        .frame(width: 28, height: 23)
+                        .foregroundColor(.white)
                     Spacer()
+                        .frame(width: 40)
+                    Image(systemName: "arrow.forward")
+                        .resizable()
+                        .frame(width: 28, height: 23)
+                        .foregroundColor(.white)
                 }
             }
         }
-        .frame(width: 260,height: 150)
+        .frame(width: 250,height: 150)
     }
 }
 
+
 struct ComponentsTest_PreviewProvider: PreviewProvider {
     static var previews: some View {
-        ZStack{
-            Color.black
-                .ignoresSafeArea()
-            VStack {
-                PrimaryButton(name: "Primary", type: .earth)
-                SecondaryButton(name: "Secondary")
-                DialogueContainer(text: "Testing dialogue", type: .planet)
-                HStack{
-                    LevelContainer(type: .earth)
-                    TutorialContainer(type: 1)
+            ZStack{
+                Color.black
+                    .ignoresSafeArea()
+                VStack {
+                    DialogueContainer(text: "Testing dialogue", type: .moon)
+                    HStack{
+                        LevelContainer(type: .earth)
+                        TutorialContainer(type: 1)
+                    }
+                    LocationContainer(type: .earth)
+                    InstructionsBanner(timeNedeed: 2)
                 }
-                LocationContainer(type: .earth)
-                InstructionsBanner(timeNedeed: 2)
             }
-        }
     }
 }

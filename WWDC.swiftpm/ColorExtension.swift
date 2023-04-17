@@ -8,16 +8,19 @@
 import Foundation
 import SwiftUI
 
+// MARK: Creating a color extension to organize all custom colors used through the game
+
 extension Color {
     static let theme = ColorTheme()
 }
 
 struct ColorTheme {
     
-    let mediumPurple = Color("mediumPurple")
-    let darkerPurple = Color("darkerPurple")
-    let mediumBlue = Color("mediumBlue")
-    let darkerBlue = Color("darkerBlue")
-    let darkerGray = Color("darkerGray")
+    let primaryColor = Color("primaryColor")
+    let secondaryColor = Color("secondaryColor")
+    let terciaryColor = Color("terciaryColor")
+    let firstGradientColor = Color("firstGradientColor")
+    let secondGradientColor = Color("secondGradientColor")
+    
 }
 

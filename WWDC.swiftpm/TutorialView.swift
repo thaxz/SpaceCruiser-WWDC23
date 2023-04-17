@@ -7,33 +7,42 @@
 
 import SwiftUI
 
+// MARK: Tutorial View that appears before playing the game
+
 struct TutorialView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
         ZStack{
-            Color.theme.darkerPurple
-            Image("levelBgPH")
+            GameGradient()
                 .ignoresSafeArea()
             VStack(spacing: 50){
+                
+                Text("TUTORIAL")
+                    .font(.system(size: 42, weight: .heavy))
+                    .foregroundColor(.white)
                 Spacer()
                 Text("This is a game of equilibrium")
-                    .font(.system(size: 22, weight: .bold))
+                    .font(.system(size: 26, weight: .bold))
                     .foregroundColor(.white)
                 HStack{
-                    TutorialContainer(type: 0)
-                    Spacer()
                     TutorialContainer(type: 1)
+                    Spacer()
+                        .frame(width: 30)
+                    TutorialContainer(type: 0)
                 }
                 Text("Tilt your device so that the spaceship is at the same angle as the guidelines")
                     .font(.system(size: 22, weight: .medium))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                
-                Button {
-                    gameViewModel.gameScene = .home
-                } label: { PrimaryButton(name: "Back to Menu", type: .earth)} .tint(.clear)
                 Spacer()
-            }.padding(16)
+                
+                PrimaryButton(action: {
+                    gameViewModel.gameScene = .levels
+                }, name: "Next").tint(.clear)
+                
+            }
+            .padding(16)
+            .padding(.vertical, 16)
         }
     }
 }

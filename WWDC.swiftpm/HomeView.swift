@@ -7,45 +7,33 @@
 
 import SwiftUI
 
+// MARK: Initial screen of the game
+
 struct HomeView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {
         ZStack{
-            Color.theme.darkerPurple
-            Image("mainMenuPH")
+            Image("initialBackground")
                 .resizable()
+                .ignoresSafeArea()
             VStack(spacing: 20){
+                Image("gameLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.vertical, 16)
                 Spacer()
-                    .frame(height: 30)
-                Text("SOME BIG NAME")
-                    .font(.system(size: 64, weight: .bold))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                Spacer()
-                Button {
-                    gameViewModel.gameScene = .levels
-                } label: { PrimaryButton(name: "Play", type: .earth) }
-                
-                Button {
+        
+                PrimaryButton(action: {
                     gameViewModel.gameScene = .tutorial
-                } label: { SecondaryButton(name: "Tutorial") } .tint(.clear)
-                Spacer()
-                    .frame(height: 20)
-                Button {
+                }, name: "Play")
+                
+                SecondaryButton(action: {
                     gameViewModel.gameScene = .credits
-                } label: {
-                    ZStack{
-                        Text("credits")
-                            .foregroundColor(.white)
-                            .font(.system(size: 22, weight: .bold)).underline()
-                    } .tint(.clear)
-                    .frame(height: 50)
-                }
+                }, name: "Credits")
             }
             .padding(16)
             .padding(.bottom, 16)
         }
-        .ignoresSafeArea()
     }
 }
 
