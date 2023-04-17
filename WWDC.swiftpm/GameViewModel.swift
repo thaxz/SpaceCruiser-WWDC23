@@ -9,6 +9,8 @@ import SwiftUI
 import CoreMotion
 import AVFoundation
 
+// MARK: - Main ViewModel that was used for coordinating the logic of the game
+
 class GameViewModel: ObservableObject {
     
     @Published var gameScene: GameScenes = .home
@@ -35,6 +37,7 @@ class GameViewModel: ObservableObject {
     
     lazy var motionManager = CMMotionManager()
   
+    // Responsible for running the spaceship spritesheet animation
     func animateSpaceship() {
             index = 0
             sprintSheetTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: {_ in
@@ -48,6 +51,7 @@ class GameViewModel: ObservableObject {
             })
       }
     
+    // Changing values according to each level
     func changeValues(){
         switch self.selectedLevel {
         case .earth:
@@ -59,6 +63,7 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    // Called to setup the game
     func setUpGame(){
         changeValues()
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
@@ -67,6 +72,7 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    // Invalidate timers and pause game
     func pauseGame(){
         secondsPlaying = secondsNeeded
         showGameOver = false
@@ -80,6 +86,7 @@ class GameViewModel: ObservableObject {
         UIApplication.shared.isIdleTimerDisabled = false
     }
     
+    // Starts gamelogic
     func startGame(){
         UIApplication.shared.isIdleTimerDisabled = true
         self.showInstructions = true
@@ -90,9 +97,28 @@ class GameViewModel: ObservableObject {
         isMoving = false
         startDate = Date()
 
+        // Setting angles to 0
         self.playerRotation = CGAffineTransform(rotationAngle: 0)
         self.planetRotation = CGAffineTransform(rotationAngle: 0)
         
+        rotatePlayer()
+      
+        // Rotates planet according to timer
+        rotationTimer = Timer.scheduledTimer(withTimeInterval: self.rotationInterval, repeats: true, block: { (timer) in
+            if self.showGameOver == false {
+                self.rotateWorld()
+            }
+        })
+        
+        Timer.scheduledTimer(withTimeInterval: 6, repeats: false, block: { (timer) in
+                self.showInstructions = false
+        })
+    }
+    
+    // Updates the rotation of the player based on the current values of the accelerometer data. Calculates the angle using the atan2 function with the x and y values of the accelerometer data and subtracts pi to obtain the correct orientation.
+    // The calculated angle is then used to update the rotation of the player
+    func rotatePlayer(){
+        // Checks if motionManager is avaliable
         if motionManager.isDeviceMotionAvailable {
             motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (data, error) in
                 if error == nil {
@@ -106,32 +132,24 @@ class GameViewModel: ObservableObject {
                 }
             }
         }
-      
-        rotationTimer = Timer.scheduledTimer(withTimeInterval: self.rotationInterval, repeats: true, block: { (timer) in
-            if self.showGameOver == false {
-                self.rotateWorld()
-            }
-        })
-        
-        Timer.scheduledTimer(withTimeInterval: 6, repeats: false, block: { (timer) in
-                self.showInstructions = false
-        })
     }
     
+    // Generates a random angle value in radians between -0.6 and 0.6 and uses to rotate the planet
     func rotateWorld(){
         let randomAngle = Double(arc4random_uniform(120))/100 - 0.6
         print(randomAngle)
         withAnimation(.spring()){
             isMoving = true
-            print("######## IS MOVING")
+            print("Is moving!")
             planetRotation = CGAffineTransform(rotationAngle: randomAngle)
         }
         Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (timer) in
             self.isMoving = false
-            print("STOPPED MOVING#####")
+            print("Stopped moving!")
         })
     }
     
+    // Checks if the player has been playing for the maximum time. If the limit has been reached, showWin is triggered.
     func checkWin(){
         winTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { time in
             if self.secondsPlaying > 0 {
@@ -146,11 +164,11 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    // Checks if the difference between the player's angle and the world angle is within the allowed range.
     func checkGameOver(){
         let worldAngle = atan2(Double(planetRotation.a), Double(planetRotation.b))
         let playerAngle = atan2(Double(playerRotation.a), Double(playerRotation.b))
         let difference = abs(worldAngle - playerAngle)
-        
         if difference > 0.35 {
             pauseGame()
             if let startDate = startDate {
@@ -158,7 +176,6 @@ class GameViewModel: ObservableObject {
             }
             showInstructions = false
             showGameOver = true
-            print("GAME OVER!!!!!1")
         }
     }
     

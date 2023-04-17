@@ -21,6 +21,7 @@ struct DialogueView: View {
     
     @State var isAnimating: Bool = false
     
+    // Changing according to each level
     init(level: GameLevels){
         self.level = level
         switch level {
@@ -46,7 +47,6 @@ struct DialogueView: View {
                     Spacer()
                     Spacer()
                     Image(character)
-                    //.resizable()
                 }
                 Spacer()
                     .frame(height: 50)
@@ -67,7 +67,7 @@ struct DialogueView: View {
                                 dialoguePosition = 0
                                 gameViewModel.showWin = false
                             }
-                        }, name: "skip", width: 100, heigth: 40) .tint(.clear)
+                        }, name: "skip", width: 100, heigth: 40)
                         
                         Spacer()
                         
@@ -82,7 +82,7 @@ struct DialogueView: View {
                                     gameViewModel.setUpGame()
                                 }
                             }
-                        }, name: "next", width: 100, heigth: 40) .tint(.clear)
+                        }, name: "next", width: 100, heigth: 40)
                     }
                     Spacer()
                         .frame(height: 20)
@@ -96,23 +96,22 @@ struct DialogueView: View {
         }
     }
     
-    
+    // Making TypeWritter effect as the dialogue is being written
     func typeWriter(at position: Int = 0) {
         isAnimating = true
-            if position == 0 {
-                text = ""
+        if position == 0 {
+            text = ""
+        }
+        if position < dialogue[dialoguePosition].count {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.015) {
+                text.append(dialogue[dialoguePosition][position])
+                typeWriter(at: position + 1)
             }
-            if position < dialogue[dialoguePosition].count {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.015) {
-                    text.append(dialogue[dialoguePosition][position])
-                    typeWriter(at: position + 1)
-                }
-            }
+        } // waiting the text to finish
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             isAnimating = false
         }
-        }
-    
+    }    
 }
 
 

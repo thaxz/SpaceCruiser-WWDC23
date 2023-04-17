@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: Defines which view is appearing on the screen
+
 struct ContentView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     var body: some View {

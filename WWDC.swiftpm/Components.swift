@@ -8,12 +8,17 @@
 import Foundation
 import SwiftUI
 
+// MARK: Creating components in order to build reusable blocks of functionality and making code modular
+
+
+// Gradient that is used on CreditsView, RelatoryView and TutorialView
 struct GameGradient: View{
     var body: some View {
         LinearGradient(colors: [Color.theme.firstGradientColor, Color.theme.secondGradientColor], startPoint: .top, endPoint: .bottom)
     }
 }
 
+// Container that holds the dialogue and it's used on DialogueView
 struct DialogueContainer: View {
     var text: String
     let type: GameLevels
@@ -35,6 +40,7 @@ struct DialogueContainer: View {
     }
 }
 
+// Customizable container that displays available levels and it's used on LevelsView
 struct LevelContainer: View {
     let type: GameLevels
     var body: some View {
@@ -60,6 +66,7 @@ struct LevelContainer: View {
     }
 }
 
+// Customizable container that displays tutorial illustrations and it's used on TutorialView
 struct TutorialContainer: View {
     let type: Int
     var body: some View {
@@ -85,6 +92,7 @@ struct TutorialContainer: View {
     }
 }
 
+// Customizable container that displays selected level location and it's used on DialogueView
 struct LocationContainer: View {
     let type: GameLevels
     var body: some View{
@@ -106,6 +114,7 @@ struct LocationContainer: View {
     }
 }
 
+// Component that displays how much time you need to play according to each level. It's used on GameView
 struct InstructionsBanner: View {
     let timeNedeed: Int
     var body: some View {
@@ -132,7 +141,6 @@ struct InstructionsBanner: View {
                         .frame(width: 28, height: 23)
                         .foregroundColor(.white)
                 }
-                  
             }
         }
         .frame(width: 250,height: 150)
@@ -155,6 +163,5 @@ struct ComponentsTest_PreviewProvider: PreviewProvider {
                     InstructionsBanner(timeNedeed: 2)
                 }
             }
-        
     }
 }

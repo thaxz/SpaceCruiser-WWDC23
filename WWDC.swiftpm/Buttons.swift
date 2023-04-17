@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+// Primary button component
 struct PrimaryButton: View {
     let action: () -> Void
     let name: String
@@ -31,6 +32,7 @@ struct PrimaryButton: View {
     }
 }
 
+// Secondary button component
 struct SecondaryButton: View {
     let action: () -> Void
     let name: String
@@ -54,6 +56,7 @@ struct SecondaryButton: View {
     }
 }
 
+// Size variation for primary button
 struct SmallPrimaryButton: View {
     let action: () -> Void
     let name: String
@@ -79,6 +82,7 @@ struct SmallPrimaryButton: View {
     }
 }
 
+// Size variation for secondary button
 struct SmallSecondaryButton: View {
     let action: () -> Void
     let name: String
@@ -116,6 +120,5 @@ struct Buttons_PreviewProvider: PreviewProvider {
                     SecondaryButton(action: {}, name: "secondary")
                 }
             }
-        
     }
 }

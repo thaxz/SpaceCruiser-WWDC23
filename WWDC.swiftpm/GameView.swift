@@ -29,7 +29,6 @@ struct GameView: View {
     
     var body: some View {
         ZStack {
-            Color.theme.darkerPurple
             Image(backgroundImage)
                 .resizable()
             ZStack(){
@@ -58,13 +57,13 @@ struct GameView: View {
                     Spacer()
                 }
             }
-            
+            // Changes popup according to game status
             if gameViewModel.showGameOver {
                 GameOverView()
-            }
+            } // game over
             if gameViewModel.showWin {
                 WinView()
-            }
+            } // win
             if gameViewModel.showInstructions {
                 VStack{
                     Spacer()
@@ -72,17 +71,17 @@ struct GameView: View {
                     InstructionsBanner(timeNedeed: gameViewModel.secondsNeeded)
                     Spacer()
                 }
-            }
+            } // showing instructions at the beginning
         }
         .onAppear{
             play("musicaTest")
         }
+        // Music stops if the game is interrupted
         .onChange(of: gameViewModel.showWin || gameViewModel.showGameOver, perform: { _ in
             player.pause()
         })
         .ignoresSafeArea()
     }
-    
 }
 
 
