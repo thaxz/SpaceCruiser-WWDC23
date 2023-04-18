@@ -70,7 +70,6 @@ struct GameOverView: View {
                         SmallPrimaryButton(action: {
                             gameViewModel.playAgain()
                             gameViewModel.showGameOver = false
-                            
                         }, name: "Try Again", width: 150, heigth: 50)
                     }
                     Spacer()

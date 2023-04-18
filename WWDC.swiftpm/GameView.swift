@@ -73,10 +73,10 @@ struct GameView: View {
                     InstructionsBanner(timeNedeed: gameViewModel.secondsNeeded)
                     Spacer()
                 }
+                .onAppear{
+                    play("gameMusicGBand")
+                }
             } // showing instructions at the beginning
-        }
-        .onAppear{
-            play("musicaTest")
         }
         // Music stops if the game is interrupted
         .onChange(of: gameViewModel.showWin || gameViewModel.showGameOver, perform: { _ in

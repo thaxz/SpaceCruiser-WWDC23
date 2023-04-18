@@ -22,4 +22,5 @@ First, download the code project and open the app in Xcode/Playground. After tha
 - "Mae Jemison Biography" by Kerri Lee Alexander (https://www.womenshistory.org/education-resources/biographies/mae-jemison)
 - "Earth Characteristics" by Nasa (https://solarsystem.nasa.gov/planets/earth/overview/)
 - "Moon Characteristics" by Nasa (https://solarsystem.nasa.gov/moons/earths-moon/overview/)
+- "Background Music" by Thaís Monteiro, using Garage Band
 
