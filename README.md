@@ -8,12 +8,11 @@ Space Cruiser is a pixel art-style game where the player is a pilot who has been
 
 ## Project
 
-This app was built with SwiftUI and utilizes the framework of CoreMotion, as well as the MVVM architecture. It was my first time working with all of these technologies, and creating every pixel art asset was a challenging (yet rewarding) experience.
-Space Cruiser's logic involves piloting a spacecraft and the device's motion is used to control the ship's rotation. The formula for rotating the player involves checking if the motionManager is available and then using the gravity data to calculate the device's orientation based on its accelerometer. To be more specific, using the 'atan2(_:_)' function to calculate the angle between the device's (x, y) accelerations and subtracting π to get radians from it. Then, the resulting angle is then converted to a CGFloat and used to set the spaceship rotation property, finally is a CGAffineTransform that applies a rotation transformation to the spachip.  
+This app was built with SwiftUI and utilizes the framework of CoreMotion, as well as the MVVM architecture. Space Cruiser's logic involves piloting a spacecraft and the device's motion is used to control the ship's rotation. The formula for rotating the player involves checking if the motionManager is available and then using the gravity data to calculate the device's orientation based on its accelerometer. To be more specific, using the 'atan2(_:_)' function to calculate the angle between the device's (x, y) accelerations and subtracting π to get radians from it. Then, the resulting angle is then converted to a CGFloat and used to set the spaceship rotation property, finally is a CGAffineTransform that applies a rotation transformation to the spachip.  
    
 ## How to play
 
-First, download the code project and open the app in Xcode/Playground. After that, since this game needs the accelerometer data, you need to built on an actual device.
+First, download the code project and open the app in Xcode/Playground. After that, since this game needs accelerometer's data, you need to built on an actual iOS device.
 
 ## Credits
 - "Close Icon" by Pixel Perfect (https://www.flaticon.com/free-icons/close)
