@@ -21,8 +21,8 @@ func play(_ sound: String) {
     }
     do {
         player = try AVAudioPlayer(contentsOf: url!)
-        player.volume = 1
-        if sound == "musicaTest"{
+        player.volume = 0.4
+        if sound == "gameMusicGBand"{
             player?.play()
             player.numberOfLoops = -1
         } else {

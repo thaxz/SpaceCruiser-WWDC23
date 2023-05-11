@@ -23,19 +23,21 @@ struct CreditsView: View {
                 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 16){
-                        CreditsSection(headerName: "Close Icon", type: "Design", source: "https://www.flaticon.com/free-icons/close", author: "Pixel Perfect")
+                        CreditsSection(headerName: "Background Music", type: "Sound Effects", source: "Created using GarageBand", author: "Thais Monteiro (owner)")
                         
-                        CreditsSection(headerName: "Tick Icon", type: "Design", source: "https://www.flaticon.com/free-icons/tick", author: "Icon Wind")
-                        
-                        CreditsSection(headerName: "Sound Effects", type: "design", source: "some link", author: "someone")
-                        
-                        CreditsSection(headerName: "Nancy Grace Biography", type: "Information", source: "https://solarsystem.nasa.gov/people/225/nancy-roman-1925-2018/", author: "Nasa")
-                        
-                        CreditsSection(headerName: "Mae Jemison Biography", type: "Information", source: "https://www.womenshistory.org/education-resources/biographies/mae-jemison", author: "Kerri Lee Alexander")
+                        CreditsSection(headerName: "Close Icon", type: "Design", source: "https://www.flaticon.com/free-icon/close_1828665?term=close&page=1&position=16&origin=search&related_id=1828665", author: "Pixel Perfect")
                         
                         CreditsSection(headerName: "Earth Characteristics", type: "Information", source: "https://solarsystem.nasa.gov/planets/earth/overview/", author: "Nasa")
                         
+                        CreditsSection(headerName: "Pixel Art Illustrations", type: "Design", source: "Created for the game", author: "Thais Monteiro (owner)")
+                        
+                        CreditsSection(headerName: "Mae Jemison Biography", type: "Information", source: "https://www.womenshistory.org/education-resources/biographies/mae-jemison", author: "Kerri Lee Alexander")
+                        
                         CreditsSection(headerName: "Moon Characteristics", type: "Information", source: "https://solarsystem.nasa.gov/moons/earths-moon/overview/", author: "Nasa")
+                        
+                        CreditsSection(headerName: "Nancy Grace Biography", type: "Information", source: "https://solarsystem.nasa.gov/people/225/nancy-roman-1925-2018/", author: "Nasa")
+                        
+                        CreditsSection(headerName: "Tick Icon", type: "Design", source: "https://www.flaticon.com/free-icon/checkmark_8968523?term=tick&page=1&position=28&origin=tag&related_id=8968523", author: "Icon Wind")
                     }
                 }
                 PrimaryButton(action: {
@@ -77,7 +79,7 @@ struct CreditsSection: View {
                         .font(.system(size: 16, weight: .regular))
                     Spacer()
                     Text(source)
-                        .font(.system(size: 14, weight: .regular))
+                        .font(.system(size: 16, weight: .regular))
                         .multilineTextAlignment(.trailing)
                 }
                 HStack {
