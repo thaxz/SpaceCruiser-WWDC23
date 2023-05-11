@@ -4,7 +4,7 @@ This Swift Playgound App was created for <a href="https://developer.apple.com/ww
 
 ## Introduction
 
-Space Cruiser is a pixel art-style game where the player is a pilot who has been selected for a space exploration program. The player's mission is to visit different planets, and even our moon, to gather information about them. The spaceship is controlled by tilting your device, which adds a level of immersion to the game. The player must navigate through each planet's unique environment and maintain control of your ship for a specific amount of time before moving on to the next one.
+Space Cruiser is a pixel art-style game where the player is a pilot who has been selected for a space exploration program. The player's mission is to visit different planets to gather information about them. The spaceship is controlled by tilting your device, which adds a level of immersion to the game. The player must navigate through each planet's unique environment and maintain control of your ship for a specific amount of time before moving on to the next one.
 
 ## Project
 
