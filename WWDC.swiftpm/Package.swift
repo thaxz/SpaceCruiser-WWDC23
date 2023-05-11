@@ -31,7 +31,11 @@ let package = Package(
                 .landscapeRight,
                 .landscapeLeft,
                 .portraitUpsideDown(.when(deviceFamilies: [.pad]))
-            ]
+            ],
+            capabilities: [
+                .motion(purposeString: "This app needs to access your device accelerometer data to calculate the rotation of the spaceship.")
+            ],
+            appCategory: .games
         )
     ],
     targets: [

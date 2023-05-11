@@ -25,7 +25,7 @@ struct CreditsView: View {
                     VStack(spacing: 16){
                         CreditsSection(headerName: "Background Music", type: "Sound Effects", source: "Created using GarageBand", author: "Thais Monteiro (owner)")
                         
-                        CreditsSection(headerName: "Close Icon", type: "Design", source: "https://www.flaticon.com/free-icons/close", author: "Pixel Perfect")
+                        CreditsSection(headerName: "Close Icon", type: "Design", source: "https://www.flaticon.com/free-icon/close_1828665?term=close&page=1&position=16&origin=search&related_id=1828665", author: "Pixel Perfect")
                         
                         CreditsSection(headerName: "Earth Characteristics", type: "Information", source: "https://solarsystem.nasa.gov/planets/earth/overview/", author: "Nasa")
                         
@@ -37,7 +37,7 @@ struct CreditsView: View {
                         
                         CreditsSection(headerName: "Nancy Grace Biography", type: "Information", source: "https://solarsystem.nasa.gov/people/225/nancy-roman-1925-2018/", author: "Nasa")
                         
-                        CreditsSection(headerName: "Tick Icon", type: "Design", source: "https://www.flaticon.com/free-icons/tick", author: "Icon Wind")
+                        CreditsSection(headerName: "Tick Icon", type: "Design", source: "https://www.flaticon.com/free-icon/checkmark_8968523?term=tick&page=1&position=28&origin=tag&related_id=8968523", author: "Icon Wind")
                     }
                 }
                 PrimaryButton(action: {

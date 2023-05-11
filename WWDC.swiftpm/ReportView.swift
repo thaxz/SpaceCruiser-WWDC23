@@ -116,7 +116,7 @@ struct ReportSection: View {
     let title: String
     let textBody: String
     var body: some View {
-        ZStack {
+        ZStack(alignment: .leading){
             RoundedRectangle(cornerRadius: 8)
                 .foregroundColor(Color.theme.primaryColor.opacity(0.30))
                 .overlay(

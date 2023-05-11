@@ -39,7 +39,7 @@ struct Dialogues{
     
     let earth: [String] = [
     "Hello and welcome to our team of space pilots! We are thrilled to have you on board.",
-    "Our institute was founded to expand human knowledge of the universe and its vastness. We're dedicated to exploring space and gathering valuable information about the planets in our solar system.",
+    "Our Grace-Jemison Institute was founded to expand human knowledge of the universe and its vastness. We're dedicated to exploring space and gathering valuable information about the planets in our solar system.",
     "I want to remeber that, as a woman in this field, you represent a large part of our mission. It's a source of pride to have someone like you piloting our ships.",
     "We know you're eager to start your missions, but before you embark on your journeys through the universe, we'd like you to get acquainted with our operations here on Earth.",
     "Your main objective will be to collect important data about the planets and bring it back to our team. Your ship is equipped with all the tools you'll need for data collection.",
@@ -53,7 +53,7 @@ struct Dialogues{
     "Our next destination is the Moon! We need you to gather information about the lunar topography and soil composition.",
     "Your spacecraft is equipped with all the necessary instruments for data collection, such as lunar penetrating radars, spectrometers, and seismometers.",
     "But keep in mind that the Moon's environment can be unpredictable, so you need to be alert at all times.",
-    "This mission is crucial for our space research. Our founder, Nancy Grace, devoted her life to this cause, and it's our responsibility to continue her legacy.",
+    "This mission is crucial for our space research. Our founders, Nancy and Mae, devoted their life to this cause, and it's our responsibility to continue this legacy.",
     "I'm confident that you'll do an excellent job once again. The scientific community is eagerly waiting for your findings!"
     ]
 }

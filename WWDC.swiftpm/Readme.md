@@ -1,4 +1,4 @@
-# Space Cruiser - WWDC Scholarship Application 
+# Space Cruiser - WWDC Scholarship Application [ACCEPTED] 
 
 The Swift Playgound App was created for <a href="https://developer.apple.com/wwdc23/swift-student-challenge/">WWDDC23 Swift Student Challenge</a>
 
@@ -22,5 +22,6 @@ First, download the code project and open the app in Xcode/Playground. After tha
 - "Mae Jemison Biography" by Kerri Lee Alexander (https://www.womenshistory.org/education-resources/biographies/mae-jemison)
 - "Earth Characteristics" by Nasa (https://solarsystem.nasa.gov/planets/earth/overview/)
 - "Moon Characteristics" by Nasa (https://solarsystem.nasa.gov/moons/earths-moon/overview/)
-- "Background Music" by Thaís Monteiro, using Garage Band
+- "Background Music" by Thaís Monteiro, using Garage Band (Owner)
+-  Besides, every other asset was totally made by Thaís Monteiro (Owner)
 
