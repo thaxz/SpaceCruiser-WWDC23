@@ -1,6 +1,6 @@
 # Space Cruiser - WWDC Scholarship Application [ACCEPTED] 
 
-This Swift Playgound App was created for <a href="https://developer.apple.com/wwdc23/swift-student-challenge/">WWDDC23 Swift Student Challenge</a>
+This Swift Playgound App was created for <a href="[https://developer.apple.com/wwdc23/swift-student-challenge/](https://www.wwdcscholars.com/s/05C74362-C2AD-43D5-B400-051CB12117E8/2023)">WWDDC23 Swift Student Challenge</a>
 
 ## Introduction
 
